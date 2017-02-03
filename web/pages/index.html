@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>FORM PWM</title>
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+      <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-extend.css">
+    <link rel="stylesheet" href="/css/site.css">
+      <!-- Plugins -->
+    <link rel="stylesheet" href="/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="/vendor/waves/waves.css">
+    <link rel="stylesheet" href="/vendor/select2/select2.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-tokenfield/bootstrap-tokenfield.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" href="/vendor/icheck/icheck.css">
+    <link rel="stylesheet" href="/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="/vendor/asrange/asRange.css">
+    <link rel="stylesheet" href="/vendor/ionrangeslider/ionrangeslider.min.css">
+    <link rel="stylesheet" href="/vendor/asspinner/asSpinner.css">
+    <link rel="stylesheet" href="/vendor/clockpicker/clockpicker.css">
+    <link rel="stylesheet" href="/vendor/ascolorpicker/asColorPicker.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-touchspin/bootstrap-touchspin.css">
+    <link rel="stylesheet" href="/vendor/jquery-labelauty/jquery-labelauty.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-maxlength/bootstrap-maxlength.css">
+    <link rel="stylesheet" href="/vendor/jt-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="/vendor/jquery-strength/jquery-strength.css">
+    <link rel="stylesheet" href="/vendor/multi-select/multi-select.css">
+    <link rel="stylesheet" href="/vendor/typeahead-js/typeahead.css">
+    <link rel="stylesheet" href="/examples/css/forms/advanced.css">
+    <link rel="stylesheet" href="/vendor/blueimp-file-upload/jquery.fileupload.css"> 
+    <link rel="stylesheet" href="/vendor/dropify/dropify.css">
+    <link rel="stylesheet" href="/vendor/jquery-wizard/jquery-wizard.css">
+    <link rel="stylesheet" href="/vendor/formvalidation/formValidation.css">
+    <link rel="stylesheet" href="/examples/css/apps/taskboard.css">
+    <link rel="stylesheet" href="examples/css/layouts/panel-transition.css">
+    <link rel="stylesheet" href="/vendor/summernote/summernote.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/fonts/material-design/material-design.min.css">
+    <link rel="stylesheet" href="/fonts/brand-icons/brand-icons.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome/font-awesome.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    <script src="/js/appendsChildTable.js"></script>
+    <script src="/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+      Breakpoints();
+    </script>
+  </head>
+  <body class="animsition">
+    <div class="page2">
+      <div class="page-content">
+        <div class="panel" id="exampleWizardForm">
+          <!-- COMIENZAN LOS PASOS -->
+          <div class="steps steps-sm row" data-plugin="matchHeight" data-by-row="true" role="tablist">
+            <div class="step col-xs-12 col-lg-2 current" data-target="#pasoContacto" role="tab">
+              <span class="step-number">1</span>
+              <div class="step-desc">
+                <span class="step-title">Contacto</span>
+                <p>Con quién me voy a dirigir</p>
+              </div>
+            </div>
+            <div class="step col-xs-12 col-lg-2" data-target="#pasoEmpresa" role="tab">
+              <span class="step-number">2</span>
+              <div class="step-desc">
+                <span class="step-title">Tu empresa</span>
+                <p>Deseamos conocer tu actividad</p>
+              </div>
+            </div>
+            <div class="step col-xs-12 col-lg-2" data-target="#pasoIdentidad" role="tab">
+              <span class="step-number">3</span>
+              <div class="step-desc">
+                <span class="step-title">Identidad</span>
+                <p>Imagen Corporativa</p>
+              </div>
+            </div>
+            <div class="step col-xs-12 col-lg-2" data-target="#pasoEstructura" role="tab">
+              <span class="step-number">4</span>
+              <div class="step-desc">
+                <span class="step-title">Estructura</span>
+                <p>Que deseas en tu sitio</p>
+              </div>
+            </div>
+            <div class="step col-xs-12 col-lg-2" data-target="#pasoSecciones" role="tab">
+              <span class="step-number">5</span>
+              <div class="step-desc">
+                <span class="step-title">Secciones</span>
+                <p>Coloca tu información</p>
+              </div>
+            </div>
+            <div class="step col-xs-12 col-lg-2" data-target="#pasoResumen" role="tab">
+              <span class="step-number">6</span>
+              <div class="step-desc">
+                <span class="step-title">Resumen</span>
+                <p>Este sería tu sitio</p>
+              </div>
+            </div>
+          </div> <!-- TERMINAN LOS PASOS -->
+          <!-- INICIA FORM CONTACTO -->
+          <div class="wizard-content">
+            <div class="wizard-pane active" id="pasoContacto" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Datos de contacto</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoContactoForm">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">Nombre:</h4>
+                        <input type="text" class="form-control" id="contactoNombre" name="contactoNombre" placeholder="Pedro Pérez" />
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">Teléfono:</h4>
+                        <input type="tel" class="form-control" id="contactoTelefono" name="contactoTelefono" placeholder="123-345-6789" />
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">Correo:</h4>
+                        <input type="email" class="form-control" id="contactoCorreo" name="contactoCorreo" placeholder="pedrito@correo.com" />
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">Paquete adquirido:</h4>
+                        <select data-plugin="selectpicker" name="paquete" id="paquete">
+                          <option data-icon="md-home" value="5">PyME</option>
+                          <option data-icon="md-bike" value="10">Profesional</option>
+                          <option data-icon="md-car"  value="15">Empresarial</option>
+                          <option data-icon="md-star" value="30">Elite</option>
+                        </select>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="botones"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA FORM CONTACTO -->
+          <!-- INICIA FORM TU EMPRESA -->
+          <div class="wizard-content">
+            <div class="wizard-pane" id="pasoEmpresa" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Datos de tu empresa</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoEmpresaForm">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">Razón Social:</h4>
+                        <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Hoteles S.A de C.V" />
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">nombre comercial:</h4>
+                        <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Hotel 'Don Pedro Pérez'" />
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">giro del negocio:</h4>
+                        <input type="text" class="form-control" id="giroNegocio" name="giroNecio" placeholder="Servicios Hoteleros" />
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">clientes:</h4>
+                        <div class="input-group">
+                          <span class="input-group-addon">1</span>
+                          <input type="text" class="form-control" id="cliente1" name="cliente1" placeholder="Turistas" />
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">2</span>
+                          <input type="text" class="form-control" id="cliente2" name="cliente2" placeholder="Viajeros"/>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">3</span>
+                          <input type="text" class="form-control" id="cliente3" name="cliente3" placeholder="Empresarios"/>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">4</span>
+                          <input type="text" class="form-control" id="cliente4" name="cliente4" placeholder="Congresistas" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">objetivos de tu página:</h4>
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-star" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="objetivo1" name="objetivo1" placeholder="Atención de primera calidad a nuestros clientes" />
+                        </div>
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-star" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="objetivo2" name="objetivo2" placeholder="Ofrecer reservaciones a través de la web" />
+                        </div>
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-star" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="objetivo3" name="objetivo3" placeholder="Posicionarnos entre los mejores hoteleros de la región" />
+                        </div>
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-star" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="objetivo4" name="objetivo4" placeholder="Crear promociones para atraer más clientes" />
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <h4 class="example-title">competencia:</h4>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-group-work" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="nombre1" name="nombre1" placeholder="Nombre" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-dns" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="sitioweb1" name="sitioweb1" placeholder="Sitio web" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-group-work" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="nombre2" name="nombre2" placeholder="Nombre" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-dns" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="sitioweb2" name="sitioweb2" placeholder="Sitio web" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-group-work" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="nombre3" name="nombre3" placeholder="Nombre" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group input-group-icon">
+                          <span class="input-group-addon">
+                            <span class="icon md-dns" aria-hidden="true"></span>
+                          </span>
+                          <input type="text" class="form-control" id="sitioweb3" name="sitioweb3" placeholder="Sitio web" />
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="botones"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA FORM TU EMPRESA -->
+          <!-- INICIA FORM IDENTIDAD-->
+          <div class="wizard-content">
+            <div class="wizard-pane" id="pasoIdentidad" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Identidad</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoIdentidadForm">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">slogan:</h4>
+                        <input type="text" class="form-control" id="slogan" name="slogan" placeholder="más que viajes ofrecemos expiencias" />
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="input-group">
+                          <h4 class="example-title">ACTUALMENTE CUENTAS CON PÁGINA WEB?</h4>
+                          <div class="form-control-wrap">
+                            <input type="checkbox" name="inputCheckboxes" checked /> Sí, tengo una página web.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">LOGO:</h4>
+                        <div class="example">
+                          <input name="logo" id="logo" type="file" id="input-file-max-fs" data-plugin="dropify" data-max-file-size="2M" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">REDES SOCIALES</h4>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                          </span>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control" name="rsFacebook" id="rsFacebook" placeholder="/hoteldonPedroPerez" />
+                          </div>
+                        </div>
+                        <br />
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                          </span>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control" name="rsTwitter" id="rsTwitter" placeholder="@hoteldonPedroPerez" />
+                          </div>
+                        </div>
+                        <br />
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                          </span>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control" name="rsInstagram" id="rsInstagram" placeholder="@hoteldonPedroPerez" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row center">
+                      <div class="col-md-6 col-xs-12">
+                        <h4 class="example-title">colores corporativos:</h4>
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6">
+                            <span>Color primario:</span>
+                          </div>
+                          <div class="col-md-6 col-xs-6">
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#9E9E9E" id="colorPrimario" name="colorPrimario" />
+                          </div> 
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6">
+                            <span>Color secundario:</span>
+                          </div>
+                          <div class="col-md-6 col-xs-6">
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#607D8B" id="colorSecundario" name="colorSecundario" />
+                          </div> 
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6">
+                            <span>Color complementario:</span>
+                          </div>
+                          <div class="col-md-6 col-xs-6">
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#616161" id="colorComplemento1" name="colorComplemento1" />
+                          </div> 
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6">
+                            <span>Color complementario:</span>
+                          </div>
+                          <div class="col-md-6 col-xs-6">
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#BDBDBD" id="colorComplemento2" name="colorComplemento2" />
+                          </div> 
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="botones"></div>  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA FORM IDENTIDAD-->
+          <!-- INICIA ESTRUCTURA-->
+          <div class="wizard-content">
+            <div class="wizard-pane" id="pasoEstructura" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Estructura</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoEstructuraForm">
+                    <div class="row row-centered">
+                      <div class="col-md-1 col-xs-1" id="divmenu1" name="divmenu1">
+                        <div class="row">
+                          <input type="text" class="form-control" name="optInicio" id="optInicio" value="Inicio">
+                        </div>
+                        <div class="row" id="divbtnmenu1">
+                          <button type="button" class="btn btn-xs btn-success" id="menu1" name="menu1" onclick="agregar('menu1')"><i class="icon md-plus" aria-hidden="true"></i>Agregar</button>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-xs-1" id="divmenu2" name="divmenu2">
+                        <div class="row">
+                          <input type="text" class="form-control" name="optNosotros" id="optNosotros" value="Nosotros">
+                        </div>
+                        <div class="row" id="divbtnmenu2">
+                          <button type="button" class="btn btn-xs btn-success" id="menu2" name="menu2" onclick="agregar('menu2')"><i class="icon md-plus" aria-hidden="true"></i>Agregar</button>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-xs-1" id="divmenu3" name="divmenu3">
+                        <div class="row">
+                          <input type="text" class="form-control" name="optContacto" id="optContacto" value="Contacto">
+                        </div>
+                        <div class="row" id="divbtnmenu3">
+                          <button type="button" class="btn btn-xs btn-success" id="menu3" name="menu3" onclick="agregar('menu3')"><i class="icon md-plus" aria-hidden="true"></i>Agregar</button>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-xs-1" id="divmenubtn" name="divmenubtn">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <button type="button" class="btn btn-icon btn-success" id="menubtn" name="menubtn" onclick="agregar('menubtn')"><i class="icon md-plus" aria-hidden="true"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="botones"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA ESTRUCTURA-->
+          <!-- INICIA SECCIONES -->
+          <div class="wizard-content">
+            <div class="wizard-pane" id="pasoSecciones" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Secciones</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoSeccionesF">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">Coloca el texto que deseas que contenga tu sitio web.</div>
+                      <div class="col-md-12 col-xs-12">
+                        <div id="summernote" data-plugin="summernote">
+                            <h2>Editor</h2>
+                            <p>Aquí puedes escribir tu texto</p> 
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="row">
+                      <div class="col-md-12 col-xs-12">Coloca todas las imágenes que deseas subir</div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="panel panel-transparent">
+                          <form id="pasoSeccionesForm">
+                            <input type="file" id="inputUpload" name="files[]" multiple="" />
+                            <div class="uploader-inline">
+                              <p class="upload-instructions">Da un clic o arrastra los archivos a subir.</p>
+                            </div>
+                            <div class="file-wrap container-fluid">
+                              <div class="file-list row"></div>
+                            </div>
+                          <br />
+                          
+                        </form>
+                        <div class="botones"></div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA SECCIONES-->
+          <!-- INICA RESUMEN-->
+          <div class="wizard-content">
+            <div class="wizard-pane" id="pasoResumen" role="tabpanel">
+              <div class="subPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Resumen</h3>
+                </div>
+                <div class="panel-body">
+                  <form id="pasoResumenForm">
+                    <br />
+                    <div class="botones"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TERMINA RESUMEN--> 
+        </div>
+        <!-- TERMINAN PANEL WIZARD -->
+      </div>
+      <!-- TERMINA EL PAGE CONTENT-->
+    </div>
+    <!-- TERMINA PAGE2-->
+    <!-- Core  -->
+    <script src="/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/vendor/tether/tether.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/vendor/animsition/animsition.js"></script>
+    <script src="/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+    <script src="/vendor/asscrollable/jquery-asScrollable.js"></script>
+    <script src="/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+    <script src="/vendor/waves/waves.js"></script>
+    <!-- Plugins -->
+    <script src="/vendor/switchery/switchery.min.js"></script>
+    <script src="/vendor/intro-js/intro.js"></script>
+    <script src="/vendor/screenfull/screenfull.js"></script>
+    <script src="/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="/vendor/select2/select2.full.min.js"></script>
+    <script src="/vendor/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+    <script src="/vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="/vendor/bootstrap-select/bootstrap-select.js"></script>
+    <script src="/vendor/icheck/icheck.min.js"></script>
+    <script src="/vendor/switchery/switchery.min.js"></script>
+    <script src="/vendor/asrange/jquery-asRange.min.js"></script>
+    <script src="/vendor/ionrangeslider/ion.rangeSlider.min.js"></script>
+    <script src="/vendor/asspinner/jquery-asSpinner.min.js"></script>
+    <script src="/vendor/clockpicker/bootstrap-clockpicker.min.js"></script>
+    <script src="/vendor/ascolor/jquery-asColor.min.js"></script>
+    <script src="/vendor/asgradient/jquery-asGradient.min.js"></script>
+    <script src="/vendor/ascolorpicker/jquery-asColorPicker.min.js"></script>
+    <script src="/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="/vendor/jquery-knob/jquery.knob.js"></script>
+    <script src="/vendor/bootstrap-touchspin/bootstrap-touchspin.min.js"></script>
+    <script src="/vendor/jquery-labelauty/jquery-labelauty.js"></script>
+    <script src="/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="/vendor/jt-timepicker/jquery.timepicker.min.js"></script>
+    <script src="/vendor/datepair/datepair.min.js"></script>
+    <script src="/vendor/datepair/jquery.datepair.min.js"></script>
+    <script src="/vendor/jquery-strength/password_strength.js"></script>
+    <script src="/vendor/jquery-strength/jquery-strength.min.js"></script>
+    <script src="/vendor/multi-select/jquery.multi-select.js"></script>
+    <script src="/vendor/typeahead-js/bloodhound.min.js"></script>
+    <script src="/vendor/typeahead-js/typeahead.jquery.min.js"></script>
+    <script src="/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="/vendor/jquery-ui/jquery-ui.js"></script>
+    <script src="/vendor/blueimp-tmpl/tmpl.js"></script>
+    <script src="/vendor/blueimp-canvas-to-blob/canvas-to-blob.js"></script>
+    <script src="/vendor/blueimp-load-image/load-image.all.min.js"></script>
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload.js"></script>
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-process.js"></script>
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-image.js"></script>
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-audio.js"></script>
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-video.js"></script> 
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-validate.js"></script> 
+    <script src="/vendor/blueimp-file-upload/jquery.fileupload-ui.js"></script>
+    <script src="/vendor/dropify/dropify.js"></script>
+    <script src="/vendor/formvalidation/formValidation.js"></script>
+    <script src="/vendor/formvalidation/framework/bootstrap.js"></script>
+    <script src="/vendor/matchheight/jquery.matchHeight-min.js"></script>
+    <script src="/vendor/jquery-wizard/jquery-wizard.js"></script>
+    <script src="/vendor/summernote/summernote.min.js"></script>
+    <!-- Scripts -->
+    <script src="/js/State.js"></script>
+    <script src="/js/Component.js"></script>
+    <script src="/js/Plugin.js"></script>
+    <script src="/js/Base.js"></script>
+    <script src="/js/Config.js"></script>
+    <script src="/js/Section/Menubar.js"></script>
+    <script src="/js/Section/GridMenu.js"></script>
+    <script src="/js/Section/Sidebar.js"></script>
+    <script src="/js/Section/PageAside.js"></script>
+    <script src="/js/Plugin/menu.js"></script>
+    <script src="/js/config/colors.js"></script>
+    <script src="/js/config/tour.js"></script>
+    <script>
+      Config.set('assets', '');
+    </script>
+    <!-- Page -->
+    <script src="/js/Site.js"></script>
+    <script src="/js/Plugin/asscrollable.js"></script>
+    <script src="/js/Plugin/slidepanel.js"></script>
+    <script src="/js/Plugin/switchery.js"></script>
+    <script src="/js/Plugin/select2.js"></script>
+    <script src="/js/Plugin/bootstrap-tokenfield.js"></script>
+    <script src="/js/Plugin/bootstrap-tagsinput.js"></script>
+    <script src="/js/Plugin/bootstrap-select.js"></script>
+    <script src="/js/Plugin/icheck.js"></script>
+    <script src="/js/Plugin/switchery.js"></script>
+    <script src="/js/Plugin/asrange.js"></script>
+    <script src="/js/Plugin/ionrangeslider.js"></script>
+    <script src="/js/Plugin/asspinner.js"></script>
+    <script src="/js/Plugin/clockpicker.js"></script>
+    <script src="/js/Plugin/ascolorpicker.js"></script>
+    <script src="/js/Plugin/bootstrap-maxlength.js"></script>
+    <script src="/js/Plugin/jquery-knob.js"></script>
+    <script src="/js/Plugin/bootstrap-touchspin.js"></script>
+    <script src="/js/Plugin/card.js"></script>
+    <script src="/js/Plugin/jquery-labelauty.js"></script>
+    <script src="/js/Plugin/bootstrap-datepicker.js"></script>
+    <script src="/js/Plugin/jt-timepicker.js"></script>
+    <script src="/js/Plugin/datepair.js"></script>
+    <script src="/js/Plugin/jquery-strength.js"></script>
+    <script src="/js/Plugin/multi-select.js"></script>
+    <script src="/js/Plugin/jquery-placeholder.js"></script>
+    <script src="/js/Plugin/material.js"></script>
+    <script src="/js/Plugin/dropify.js"></script>
+    <script src="/examples/js/forms/uploads.js"></script>
+    <script src="/examples/js/forms/advanced.js"></script>
+    <script src="/js/Site.js"></script>
+    <script src="/js/Plugin/jquery-wizard.js"></script>
+    <script src="/js/Plugin/matchheight.js"></script>
+    <script src="/examples/js/forms/wizard.js"></script>
+    <script src="/js/Plugin/panel.js"></script>
+    <script src="/examples/js/layouts/panel-transition.js"></script>
+    <script src="/js/Plugin/summernote.js"></script>
+    <script src="/examples/js/forms/editor-summernote.js"></script>
+  </body>
+</html>
