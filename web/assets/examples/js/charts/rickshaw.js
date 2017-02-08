@@ -5,9 +5,7 @@
  */
 (function(document, window, $) {
   'use strict';
-
   var Site = window.Site;
-
   $(document).ready(function($) {
     Site.run();
   });
@@ -83,6 +81,7 @@
       graph.render();
     });
   })();
+
 
   // Example Scatter Plot
   // --------------------
@@ -322,7 +321,7 @@
           return {
             x: d.x,
             y: d.y / 4
-          }
+          };
         }),
         color: Config.colors("indigo", 500),
         renderer: 'bar'
@@ -332,7 +331,7 @@
           return {
             x: d.x,
             y: d.y * 1.5
-          }
+          };
         }),
         renderer: 'line',
         color: Config.colors("red", 500)
@@ -359,11 +358,11 @@
       graph: graph,
       legend: legend,
       disabledColor: function() {
-        return 'rgba(0, 0, 0, 0.2)'
+        return 'rgba(0, 0, 0, 0.2)';
       }
     });
 
-    var highlighter = new Rickshaw.Graph.Behavior.Series.Toggle({
+    highlighter = new Rickshaw.Graph.Behavior.Series.Toggle({
       graph: graph,
       legend: legend
     });

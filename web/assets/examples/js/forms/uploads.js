@@ -16,7 +16,7 @@
   // -------------------
   $('#pasoSeccionesForm').fileupload({
     url: '../../server/fileupload/',
-    dropzone: $('#pasoSeccionesForm'),
+    dropzone: $('#arrastremultiple'),
     filesContainer: $('.file-list'),
     uploadTemplateId: false,
     downloadTemplateId: false,
@@ -109,7 +109,7 @@
   });
 
   $(document).bind('dragover', function(e) {
-    var dropZone = $('#pasoSeccionesForm'),
+    var dropZone = $('#arrastremultiple'),
       timeout = window.dropZoneTimeout;
     if (!timeout) {
       dropZone.addClass('in');

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define('/Site', ['exports', 'jquery', 'Config', 'Base', 'Menubar', 'GridMenu', 'Sidebar', 'PageAside'], factory);
+    define('/Site', ['exports', 'jquery', 'Config', 'Base', 'Menubar', 'Sidebar', 'PageAside'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('jquery'), require('Config'), require('Base'), require('Menubar'), require('GridMenu'), require('Sidebar'), require('PageAside'));
+    factory(exports, require('jquery'), require('Config'), require('Base'), require('Menubar'), require('Sidebar'), require('PageAside'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.jQuery, global.Config, global.Base, global.SectionMenubar, global.SectionGridMenu, global.SectionSidebar, global.SectionPageAside);
+    factory(mod.exports, global.jQuery, global.Config, global.Base, global.SectionMenubar, global.SectionSidebar, global.SectionPageAside);
     global.Site = mod.exports;
   }
-})(this, function (exports, _jquery, _Config, _Base2, _Menubar, _GridMenu, _Sidebar, _PageAside) {
+})(this, function (exports, _jquery, _Config, _Base2, _Menubar, _Sidebar, _PageAside) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -25,8 +25,6 @@
   var _Base3 = babelHelpers.interopRequireDefault(_Base2);
 
   var _Menubar2 = babelHelpers.interopRequireDefault(_Menubar);
-
-  var _GridMenu2 = babelHelpers.interopRequireDefault(_GridMenu);
 
   var _Sidebar2 = babelHelpers.interopRequireDefault(_Sidebar);
 
@@ -58,7 +56,6 @@
         this.initBootstrap();
 
         this.setupMenubar();
-        this.setupGridMenu();
         this.setupFullScreen();
         this.setupMegaNavbar();
         this.setupWave();
@@ -74,28 +71,14 @@
       key: '_getDefaultMeunbarType',
       value: function _getDefaultMeunbarType() {
         var breakpoint = this.getCurrentBreakpoint(),
-            type = false;
+            type = 'open';
 
-        if ($BODY.data('autoMenubar') === false || $BODY.is('.site-menubar-keep')) {
-          if ($BODY.hasClass('site-menubar-fold')) {
-            type = 'fold';
-          } else if ($BODY.hasClass('site-menubar-unfold')) {
-            type = 'unfold';
-          }
+        if ($BODY.hasClass('site-menubar-keep') && $BODY.is('.site-menubar-keep')) {
+          type = 'hide';
         }
 
-        switch (breakpoint) {
-          case 'lg':
-            type = type || 'unfold';
-            break;
-          case 'md':
-          case 'sm':
-            type = type || 'fold';
-            break;
-          case 'xs':
-            type = 'hide';
-            break;
-          // no default
+        if (breakpoint === 'xs') {
+          type = 'hide';
         }
         return type;
       }
@@ -104,8 +87,7 @@
       value: function getDefaultState() {
         var menubarType = this._getDefaultMeunbarType();
         return {
-          menubarType: menubarType,
-          gridmenu: false
+          menubarType: menubarType
         };
       }
     }, {
@@ -137,11 +119,8 @@
         var menubar = new _Menubar2.default({
           $el: (0, _jquery2.default)('.site-menubar')
         });
-        var gridmenu = new _GridMenu2.default({
-          $el: (0, _jquery2.default)('.site-gridmenu')
-        });
         var sidebar = new _Sidebar2.default();
-        var children = [menubar, gridmenu, sidebar];
+        var children = [menubar, sidebar];
         var $aside = (0, _jquery2.default)('.page-aside');
         if ($aside.length > 0) {
           children.push(new _PageAside2.default({
@@ -198,23 +177,6 @@
         }
       }
     }, {
-      key: 'setupGridMenu',
-      value: function setupGridMenu() {
-        var self = this;
-        $DOC.on('click', '[data-toggle="gridmenu"]', function () {
-          var $this = (0, _jquery2.default)(this),
-              isOpened = self.getState('gridmenu');
-
-          if (isOpened) {
-            $this.addClass('active').attr('aria-expanded', true);
-          } else {
-            $this.removeClass('active').attr('aria-expanded', false);
-          }
-
-          self.setState('gridmenu', !isOpened);
-        });
-      }
-    }, {
       key: 'setupMegaNavbar',
       value: function setupMegaNavbar() {
         $DOC.on('click', '.navbar-mega .dropdown-menu', function (e) {
@@ -257,12 +219,6 @@
         (0, _jquery2.default)(document).on('click', '[data-toggle="menubar"]', function () {
           var type = _this2.getState('menubarType');
           switch (type) {
-            case 'fold':
-              type = 'unfold';
-              break;
-            case 'unfold':
-              type = 'fold';
-              break;
             case 'open':
               type = 'hide';
               break;
@@ -281,6 +237,24 @@
         });
       }
     }, {
+      key: 'startLoading',
+      value: function startLoading() {
+        if (typeof _jquery2.default.fn.animsition === 'undefined') {
+          return false;
+        }
+
+        // let loadingType = 'default';
+        $BODY.animsition({
+          inClass: 'fade-in',
+          inDuration: 800,
+          loading: true,
+          loadingClass: 'loader-overlay',
+          loadingParentElement: 'html',
+          loadingInner: '\n      <div class="loader-content">\n        <img src="' + Config.get('assets') + '/images/logo@2x.png">\n        <h2>Remark</h2>\n        <div class="loader-index">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>',
+          onLoadEvent: true
+        });
+      }
+    }, {
       key: 'setupNavbarCollpase',
       value: function setupNavbarCollpase() {
         (0, _jquery2.default)(document).on('click', "[data-target='#site-navbar-collapse']", function (e) {
@@ -291,27 +265,6 @@
           setTimeout(function () {
             $BODY.removeClass("site-navbar-collapsing");
           }, 350);
-        });
-      }
-    }, {
-      key: 'startLoading',
-      value: function startLoading() {
-        if (typeof _jquery2.default.fn.animsition === 'undefined') {
-          return false;
-        }
-
-        // let loadingType = 'default';
-        var assets = Config.get('assets');
-        $BODY.animsition({
-          inClass: 'fade-in',
-          outClass: 'fade-out',
-          inDuration: 800,
-          outDuration: 500,
-          loading: true,
-          loadingClass: 'loader-overlay',
-          loadingParentElement: 'html',
-          loadingInner: '\n      <div class="loader-content">\n        <img src="' + assets + '/images/logo@2x.png">\n        <h2>Remark</h2>\n        <div class="loader-index">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>',
-          onLoadEvent: true
         });
       }
     }, {

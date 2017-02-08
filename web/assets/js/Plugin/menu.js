@@ -1,21 +1,17 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define('/Plugin/menu', ['exports', 'Plugin'], factory);
+    define('/Plugin/menu', ['Plugin'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('Plugin'));
+    factory(require('Plugin'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Plugin);
+    factory(global.Plugin);
     global.PluginMenu = mod.exports;
   }
-})(this, function (exports, _Plugin2) {
+})(this, function (_Plugin2) {
   'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
 
   var _Plugin3 = babelHelpers.interopRequireDefault(_Plugin2);
 
@@ -59,14 +55,14 @@
 
         this.$el.on('mouseenter.site.menu', '.site-menu-item', function () {
           var $item = $(this);
-          if (self.folded === true && $item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+          if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
             var $sub = $item.children('.site-menu-sub');
             self.position($item, $sub);
           }
           $item.addClass('hover');
         }).on('mouseleave.site.menu', '.site-menu-item', function () {
           var $item = $(this);
-          if (self.folded === true && $item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+          if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
             $item.children('.site-menu-sub').css('max-height', '');
           }
           $item.removeClass('hover');
@@ -87,9 +83,7 @@
             $item.addClass('open');
           });
 
-          if (self.options.accordion) {
-            $item.siblings('.open').trigger('close.site.menu');
-          }
+          $item.siblings('.open').trigger('close.site.menu');
 
           e.stopPropagation();
         }).on('close.site.menu', '.site-menu-item.open', function (e) {
@@ -102,8 +96,7 @@
           e.stopPropagation();
         }).on('click.site.menu ', '.site-menu-item', function (e) {
           var $item = $(this);
-
-          if ($item.is('.has-sub') && $(e.target).closest('.site-menu-item').is(this)) {
+          if ($item.parent('.site-menu').length === 0 && $item.is('.has-sub') && $(e.target).closest('.site-menu-item').is(this)) {
             if ($item.is('.open')) {
               $item.trigger('close.site.menu');
             } else {
@@ -116,23 +109,29 @@
 
           e.stopPropagation();
         }).on('tap.site.menu', '> .site-menu-item > a', function () {
-          var link = $(this).attr('href');
+          var $item = $(this);
 
-          if (link) {
-            window.location = link;
-          }
-        }).on('touchend.site.menu', '> .site-menu-item > a', function () {
-          var $item = $(this).parent('.site-menu-item');
-
-          if (self.folded === true) {
-            if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
-              $item.siblings('.hover').removeClass('hover');
-
-              if ($item.is('.hover')) {
-                $item.removeClass('hover');
-              } else {
-                $item.addClass('hover');
+          if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+            $item.siblings('.hover').each(function () {
+              var $item = $(this);
+              if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+                $item.children('.site-menu-sub').css('max-height', '');
               }
+
+              $item.removeClass('hover');
+            });
+
+            if ($item.is('.hover')) {
+              if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+                $item.children('.site-menu-sub').css('max-height', '');
+              }
+              $item.removeClass('hover');
+            } else {
+              if ($item.is('.has-sub') && $item.parent('.site-menu').length > 0) {
+                var $sub = $item.children('.site-menu-sub');
+                self.position($item, $sub);
+              }
+              $item.addClass('hover');
             }
           }
         }).on('scroll.site.menu', '.site-menu-sub', function (e) {
@@ -212,8 +211,7 @@
       key: 'getDefaults',
       value: function getDefaults() {
         return {
-          speed: 250,
-          accordion: true
+          speed: 250
         };
       }
     }]);
@@ -221,6 +219,4 @@
   }(_Plugin3.default);
 
   _Plugin3.default.register(NAME, Menu);
-
-  exports.default = Menu;
 });

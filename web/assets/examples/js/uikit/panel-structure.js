@@ -25,6 +25,7 @@
     });
   })();
 
+
   // Example Panel With Tool
   // -----------------------
   window.customRefreshCallback = function(done) {
@@ -35,21 +36,4 @@
     }, 1000);
   };
 
-  // Example rating
-  // ----------------------
-  // data-plugin="rating" data-half="true" data-number="9" data-score="3" data-hints="bad,,,,regular,,,,gorgeous"
-  $(".yellow-rating").raty({
-    targetKeep: true,
-    half: true,
-    number: 9,
-    score: 3,
-    hints: ["bad", "", "", "", "regular", "", "", "", "gorgeous"],
-    icon: "font",
-    starType: "i",
-    starOff: "icon wb-star",
-    starOn: "icon wb-star yellow-600",
-    cancelOff: "icon wb-minus-circle",
-    cancelOn: "icon wb-minus-circle yellow-600",
-    starHalf: "icon wb-star-half yellow-500"
-  })
 })(document, window, jQuery);

@@ -23,7 +23,6 @@
     $('.click2edit').summernote('destroy');
   };
 
-
   // Example Hint for words
   // ----------------------
   (function() {

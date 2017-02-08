@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/bootstrap-extend.css">
     <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/site2.css">
       <!-- Plugins -->
     <link rel="stylesheet" href="/vendor/animsition/animsition.css">
     <link rel="stylesheet" href="/vendor/asscrollable/asScrollable.css">
@@ -59,7 +60,7 @@
       Breakpoints();
     </script>
   </head>
-  <body class="animsition">
+  <body class="animsition page2">
     <div class="page2">
       <div class="page-content">
         <div class="panel" id="exampleWizardForm">
@@ -453,34 +454,34 @@
                   <h3 class="panel-title">Secciones</h3>
                 </div>
                 <div class="panel-body">
-                  <form id="pasoSeccionesF">
-                    <div class="row">
+                  <div class="row">
                       <div class="col-md-12 col-xs-12">Coloca el texto que deseas que contenga tu sitio web.</div>
                       <div class="col-md-12 col-xs-12">
-                        <div id="summernote" data-plugin="summernote">
-                            <h2>Editor</h2>
-                            <p>Aquí puedes escribir tu texto</p> 
-                        </div>
+                        <form id="pasoSeccionesF">
+                          <div id="summernote" data-plugin="summernote">
+                              <h2>Editor</h2>
+                              <p>Aquí puedes escribir tu texto</p> 
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12">Coloca todas las imágenes que deseas subir</div>
+                    <div class="col-md-12 col-xs-12">
+                      <div class="panel panel-transparent">
+                        <form id="pasoSeccionesForm">
+                          <input type="file" id="inputUpload" name="files[]" multiple="" />
+                          <div class="uploader-inline">
+                            <p class="upload-instructions">Da un clic o arrastra los archivos a subir.</p>
+                          </div>
+                          <div class="file-wrap container-fluid">
+                            <div class="file-list row"></div>
+                          </div>
+                          <br />  
+                        </form>
+                        <div class="botones"></div>
                       </div>
                     </div>
-                  </form>
-                  <div class="row">
-                      <div class="col-md-12 col-xs-12">Coloca todas las imágenes que deseas subir</div>
-                      <div class="col-md-12 col-xs-12">
-                        <div class="panel panel-transparent">
-                          <form id="pasoSeccionesForm">
-                            <input type="file" id="inputUpload" name="files[]" multiple="" />
-                            <div class="uploader-inline">
-                              <p class="upload-instructions">Da un clic o arrastra los archivos a subir.</p>
-                            </div>
-                            <div class="file-wrap container-fluid">
-                              <div class="file-list row"></div>
-                            </div>
-                          <br />
-                          <div class="botones"></div>
-                        </form>
-                        </div>
-                      </div>
                   </div>
                 </div>
               </div>
@@ -577,7 +578,6 @@
     <script src="/js/Base.js"></script>
     <script src="/js/Config.js"></script>
     <script src="/js/Section/Menubar.js"></script>
-    <script src="/js/Section/GridMenu.js"></script>
     <script src="/js/Section/Sidebar.js"></script>
     <script src="/js/Section/PageAside.js"></script>
     <script src="/js/Plugin/menu.js"></script>
@@ -616,7 +616,6 @@
     <script src="/js/Plugin/material.js"></script>
     <script src="/js/Plugin/dropify.js"></script>
     <script src="/examples/js/forms/uploads.js"></script>
-    <script src="/examples/js/forms/advanced.js"></script>
     <script src="/js/Site.js"></script>
     <script src="/js/Plugin/jquery-wizard.js"></script>
     <script src="/js/Plugin/matchheight.js"></script>
@@ -624,6 +623,5 @@
     <script src="/js/Plugin/panel.js"></script>
     <script src="/examples/js/layouts/panel-transition.js"></script>
     <script src="/js/Plugin/summernote.js"></script>
-    <script src="/examples/js/forms/editor-summernote.js"></script>
   </body>
 </html>

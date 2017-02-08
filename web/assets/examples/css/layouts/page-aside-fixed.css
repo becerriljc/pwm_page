@@ -21,7 +21,7 @@
 }
 
 .site-menubar-unfold .page-aside-fix + .site-footer {
-  margin-left: 520px;
+  margin-left: 390px;
 }
 
 .site-menubar-fold .page-aside-fix + .site-footer {
@@ -39,7 +39,7 @@
     margin-left: 220px;
   }
   .site-menubar-unfold .page-aside-fix + .site-footer {
-    margin-left: 480px;
+    margin-left: 350px;
   }
   .site-menubar-fold .page-aside-fix + .site-footer {
     margin-left: 310px;

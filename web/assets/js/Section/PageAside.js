@@ -69,7 +69,7 @@
               });
             } else {
               _this2.$el.off('transitionend');
-              _this2.scrollable.update();
+              _this2.scrollable.disable();
             }
           }
         });

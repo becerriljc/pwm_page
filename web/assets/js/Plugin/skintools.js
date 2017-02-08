@@ -9,7 +9,7 @@
   if (!window.localStorage) {
     return null;
   }
-  var layout = 'base';
+  var layout = 'iconbar';
   // var levelPaht = layout;
   var settingsName = 'remark.material.' + layout + '.skinTools';
   var settings = localStorage.getItem(settingsName);

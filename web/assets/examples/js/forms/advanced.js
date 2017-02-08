@@ -361,7 +361,7 @@
       });
     })();
 
-    // Prefetch typeahead
+    /* Prefetch typeahead
     // ----------------
     (function() {
       var countries = new Bloodhound({
@@ -379,7 +379,7 @@
         source: countries
       });
     })();
-
+*/
 
   })();
 })(document, window, jQuery);

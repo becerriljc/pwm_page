@@ -16,33 +16,33 @@
   // -------------------
   (function() {
     // set up formvalidation
-    $('#exampleAccountForm').formValidation({
+    /*$('#exampleAccountForm').formValidation({
       framework: 'bootstrap',
       fields: {
         username: {
           validators: {
             notEmpty: {
-              message: 'El nombre de usuario es requerido'
+              message: 'The username is required'
             },
             stringLength: {
               min: 6,
               max: 30,
-              message: 'El nombre de usuario debe contener entre 6 y 30 caracteres'
+              message: 'The username must be more than 6 and less than 30 characters long'
             },
             regexp: {
               regexp: /^[a-zA-Z0-9_\.]+$/,
-              message: 'El nombre de usuario sólo puede contener letras, numeros, puntos(.) y guiones(-)'
+              message: 'The username can only consist of alphabetical, number, dot and underscore'
             }
           }
         },
         password: {
           validators: {
             notEmpty: {
-              message: 'La contraseña es requerida'
+              message: 'The password is required'
             },
             different: {
               field: 'username',
-              message: 'La contraseña no puede ser igual al nombre de usuario'
+              message: 'The password cannot be the same as username'
             }
           }
         }
@@ -86,7 +86,7 @@
       row: {
         invalid: 'has-danger'
       }
-    });
+    }); */
 
     // init the wizard
     var defaults = Plugin.getDefaults("wizard");
@@ -98,7 +98,7 @@
 
     // setup validator
     // http://formvalidation.io/api/#is-valid
-    wizard.get("#exampleAccount").setValidator(function() {
+    /*wizard.get("#exampleAccount").setValidator(function() {
       var fv = $("#exampleAccountForm").data('formValidation');
       fv.validate();
 
@@ -118,7 +118,7 @@
       }
 
       return true;
-    });
+    }); */
   })();
 
 
