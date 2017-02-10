@@ -49,6 +49,11 @@
     <link rel="stylesheet" href="/examples/css/apps/taskboard.css">
     <link rel="stylesheet" href="examples/css/layouts/panel-transition.css">
     <link rel="stylesheet" href="/vendor/bootstrap-markdown/bootstrap-markdown.css">
+    <link rel="stylesheet" href="/vendor/chartist/chartist.css">
+    <link rel="stylesheet" href="/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="/vendor/jquery-selective/jquery-selective.css">
+    <link rel="stylesheet" href="/examples/css/apps/work.css">
+    <link rel="stylesheet" href="/examples/css/tables/basic.css">
     <!-- Fonts -->
     <link rel="stylesheet" href="/fonts/material-design/material-design.min.css">
     <link rel="stylesheet" href="/fonts/brand-icons/brand-icons.min.css">
@@ -87,21 +92,14 @@
                 <p>Imagen Corporativa</p>
               </div>
             </div>
-            <div class="step col-xs-12 col-lg-2" data-target="#pasoEstructura" role="tab">
+            <div class="step col-xs-12 col-lg-3" data-target="#pasoEstructura" role="tab">
               <span class="step-number">4</span>
               <div class="step-desc">
                 <span class="step-title">Estructura</span>
                 <p>Que deseas en tu sitio</p>
               </div>
             </div>
-            <div class="step col-xs-12 col-lg-2" data-target="#pasoSecciones" role="tab">
-              <span class="step-number">5</span>
-              <div class="step-desc">
-                <span class="step-title">Secciones</span>
-                <p>Coloca tu información</p>
-              </div>
-            </div>
-            <div class="step col-xs-12 col-lg-2" data-target="#pasoResumen" role="tab">
+            <div class="step col-xs-12 col-lg-3" data-target="#pasoResumen" role="tab">
               <span class="step-number">6</span>
               <div class="step-desc">
                 <span class="step-title">Resumen</span>
@@ -120,21 +118,28 @@
                   <form id="pasoContactoForm">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">Nombre:</h4>
                         <input type="text" class="form-control" id="contactoNombre" name="contactoNombre" placeholder="Pedro Pérez" />
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">Teléfono:</h4>
                         <input type="tel" class="form-control" id="contactoTelefono" name="contactoTelefono" placeholder="123-345-6789" />
+                      </div>
                       </div>
                     </div>
                     <br />
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">Correo:</h4>
                         <input type="email" class="form-control" id="contactoCorreo" name="contactoCorreo" placeholder="pedrito@correo.com" />
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">Paquete adquirido:</h4>
                         <select data-plugin="selectpicker" name="paquete" id="paquete">
                           <option data-icon="md-home" value="5">PyME</option>
@@ -143,6 +148,7 @@
                           <option data-icon="md-star" value="30">Elite</option>
                         </select>
                       </div>
+                    </div>
                     </div>
                     <br />
                     <div class="botones"></div>
@@ -163,67 +169,89 @@
                   <form id="pasoEmpresaForm">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">Razón Social:</h4>
                         <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Hoteles S.A de C.V" />
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">nombre comercial:</h4>
                         <input type="text" class="form-control" id="nombreComercial" name="nombreComercial" placeholder="Hotel 'Don Pedro Pérez'" />
+                      </div>
                       </div>
                     </div>
                     <br />
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">giro del negocio:</h4>
-                        <input type="text" class="form-control" id="giroNegocio" name="giroNecio" placeholder="Servicios Hoteleros" />
+                        <input type="text" class="form-control" id="giroNegocio" name="giroNegocio" placeholder="Servicios Hoteleros" />
+                      </div>
                       </div>
                     </div>
                     <br />
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <h4 class="example-title">clientes:</h4>
-                        <div class="input-group">
-                          <span class="input-group-addon">1</span>
-                          <input type="text" class="form-control" id="cliente1" name="cliente1" placeholder="Turistas" />
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">1</span>
+                            <input type="text" class="form-control" id="cliente1" name="cliente1" placeholder="Turistas" />
+                          </div>
                         </div>
-                        <div class="input-group">
-                          <span class="input-group-addon">2</span>
-                          <input type="text" class="form-control" id="cliente2" name="cliente2" placeholder="Viajeros"/>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">2</span>
+                            <input type="text" class="form-control" id="cliente2" name="cliente2" placeholder="Viajeros"/>
+                          </div>
                         </div>
-                        <div class="input-group">
-                          <span class="input-group-addon">3</span>
-                          <input type="text" class="form-control" id="cliente3" name="cliente3" placeholder="Empresarios"/>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">3</span>
+                            <input type="text" class="form-control" id="cliente3" name="cliente3" placeholder="Empresarios"/>
+                          </div>
                         </div>
-                        <div class="input-group">
-                          <span class="input-group-addon">4</span>
-                          <input type="text" class="form-control" id="cliente4" name="cliente4" placeholder="Congresistas" />
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">4</span>
+                            <input type="text" class="form-control" id="cliente4" name="cliente4" placeholder="Congresistas" />
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <h4 class="example-title">objetivos de tu página:</h4>
-                        <div class="input-group input-group-icon">
-                          <span class="input-group-addon">
-                            <span class="icon md-star" aria-hidden="true"></span>
-                          </span>
-                          <input type="text" class="form-control" id="objetivo1" name="objetivo1" placeholder="Atención de primera calidad a nuestros clientes" />
+                        <div class="form-group">
+                          <div class="input-group input-group-icon">
+                            <span class="input-group-addon">
+                              <span class="icon md-star" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" id="objetivo1" name="objetivo1" placeholder="Atención de primera calidad a nuestros clientes" />
+                          </div>
                         </div>
-                        <div class="input-group input-group-icon">
-                          <span class="input-group-addon">
-                            <span class="icon md-star" aria-hidden="true"></span>
-                          </span>
-                          <input type="text" class="form-control" id="objetivo2" name="objetivo2" placeholder="Ofrecer reservaciones a través de la web" />
+                        <div class="form-group">
+                          <div class="input-group input-group-icon">
+                            <span class="input-group-addon">
+                              <span class="icon md-star" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" id="objetivo2" name="objetivo2" placeholder="Ofrecer reservaciones a través de la web" />
+                          </div>
                         </div>
-                        <div class="input-group input-group-icon">
-                          <span class="input-group-addon">
-                            <span class="icon md-star" aria-hidden="true"></span>
-                          </span>
-                          <input type="text" class="form-control" id="objetivo3" name="objetivo3" placeholder="Posicionarnos entre los mejores hoteleros de la región" />
+                        <div class="form-group">
+                          <div class="input-group input-group-icon">
+                            <span class="input-group-addon">
+                              <span class="icon md-star" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" id="objetivo3" name="objetivo3" placeholder="Posicionarnos entre los mejores hoteleros de la región" />
+                          </div>
                         </div>
-                        <div class="input-group input-group-icon">
-                          <span class="input-group-addon">
-                            <span class="icon md-star" aria-hidden="true"></span>
-                          </span>
-                          <input type="text" class="form-control" id="objetivo4" name="objetivo4" placeholder="Crear promociones para atraer más clientes" />
+                        <div class="form-group">
+                          <div class="input-group input-group-icon">
+                            <span class="input-group-addon">
+                              <span class="icon md-star" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" class="form-control" id="objetivo4" name="objetivo4" placeholder="Crear promociones para atraer más clientes" />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -233,6 +261,7 @@
                         <h4 class="example-title">competencia:</h4>
                       </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-group-work" aria-hidden="true"></span>
@@ -240,15 +269,20 @@
                           <input type="text" class="form-control" id="nombre1" name="nombre1" placeholder="Nombre" />
                         </div>
                       </div>
+                      </div>
+
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-dns" aria-hidden="true"></span>
                           </span>
-                          <input type="text" class="form-control" id="sitioweb1" name="sitioweb1" placeholder="Sitio web" />
+                          <input type="url" class="form-control" id="sitioweb1" name="sitioweb1" placeholder="Sitio web" />
                         </div>
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-group-work" aria-hidden="true"></span>
@@ -256,15 +290,19 @@
                           <input type="text" class="form-control" id="nombre2" name="nombre2" placeholder="Nombre" />
                         </div>
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-dns" aria-hidden="true"></span>
                           </span>
-                          <input type="text" class="form-control" id="sitioweb2" name="sitioweb2" placeholder="Sitio web" />
+                          <input type="url" class="form-control" id="sitioweb2" name="sitioweb2" placeholder="Sitio web" />
                         </div>
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-group-work" aria-hidden="true"></span>
@@ -272,13 +310,16 @@
                           <input type="text" class="form-control" id="nombre3" name="nombre3" placeholder="Nombre" />
                         </div>
                       </div>
+                      </div>
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <div class="input-group input-group-icon">
                           <span class="input-group-addon">
                             <span class="icon md-dns" aria-hidden="true"></span>
                           </span>
-                          <input type="text" class="form-control" id="sitioweb3" name="sitioweb3" placeholder="Sitio web" />
+                          <input type="url" class="form-control" id="sitioweb3" name="sitioweb3" placeholder="Sitio web" />
                         </div>
+                      </div>
                       </div>
                     </div>
                     <br />
@@ -300,16 +341,20 @@
                   <form id="pasoIdentidadForm">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
+                      <div class="form-group">
                         <h4 class="example-title">slogan:</h4>
                         <input type="text" class="form-control" id="slogan" name="slogan" placeholder="más que viajes ofrecemos expiencias" />
                       </div>
-                      <div class="col-md-6 col-xs-12">
+                      </div>
+                      <div class="col-md-3 col-xs-6">
                         <div class="input-group">
                           <h4 class="example-title">ACTUALMENTE CUENTAS CON PÁGINA WEB?</h4>
                           <div class="form-control-wrap">
-                            <input type="checkbox" name="inputCheckboxes" checked /> Sí, tengo una página web.
+                            <input type="checkbox" name="tienePaginaweb" id="tienePaginaweb" onchange="getPaginaweb()" /> Sí, tengo una página web.
                           </div>
                         </div>
+                      </div>
+                      <div class="col-md-3 col-xs-6" name="paginawebactual" id="paginawebactual">
                       </div>
                     </div>
                     <br />
@@ -322,15 +367,17 @@
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <h4 class="example-title">REDES SOCIALES</h4>
-                        <div class="input-group">
-                          <span class="input-group-addon">
-                            <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
-                          </span>
-                          <div class="form-control-wrap">
-                            <input type="text" class="form-control" name="rsFacebook" id="rsFacebook" placeholder="/hoteldonPedroPerez" />
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                            </span>
+                            <div class="form-control-wrap">
+                              <input type="text" class="form-control" name="rsFacebook" id="rsFacebook" placeholder="/hoteldonPedroPerez" />
+                            </div>
                           </div>
                         </div>
-                        <br />
+                        <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
@@ -339,7 +386,8 @@
                             <input type="text" class="form-control" name="rsTwitter" id="rsTwitter" placeholder="@hoteldonPedroPerez" />
                           </div>
                         </div>
-                        <br />
+                        </div>
+                        <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
@@ -348,6 +396,7 @@
                             <input type="text" class="form-control" name="rsInstagram" id="rsInstagram" placeholder="@hoteldonPedroPerez" />
                           </div>
                         </div>
+                      </div>
                       </div>
                     </div>
                     <br />
@@ -527,36 +576,116 @@
           </div>
           <!-- End Modal -->
           <!-- TERMINA ESTRUCTURA-->
-          <!-- INICIA SECCIONES -->
-          <div class="wizard-content">
-            <div class="wizard-pane" id="pasoSecciones" role="tabpanel">
-              <div class="subPanel">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Secciones</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-12 col-xs-12">
-                      <div class="botones"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TERMINA SECCIONES-->
           <!-- INICA RESUMEN-->
           <div class="wizard-content">
             <div class="wizard-pane" id="pasoResumen" role="tabpanel">
               <div class="subPanel">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Resumen</h3>
-                </div>
                 <div class="panel-body">
-                  <form id="pasoResumenForm">
-                    <br />
-                    <div class="botones"></div>
-                  </form>
+                  <div class="app-work">
+                    <div class="panel">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">RESUMEN GENERAL DEL PROYECTO</h3>
+                        <ul class="panel-info">
+                          <li>
+                            <img src="/images/avenger.png" class="tam-img" id="logo-resumen" name="logo-resumen">
+                            <p>Logo</p>
+                          </li>
+                          <li>
+                            <div class="green-600" id="slogan-resumen" name="slogan-resumen">
+                              Mas que viajes ofrecemos experiencias
+                            </div>
+                            <p>Slogan</p>
+                          </li>
+                          <li>
+                            <div class="green-600">Cadena Hotelera "Los Cabos"</div>
+                            <p>Nombre Comercial</p>
+                          </li>
+                          <li>
+                            <div class="green-600">Pedro Pérez Pérez</div>
+                            <p>Contacto</p>
+                          </li>
+                          <li>
+                            <div class="green-600" id="paquete-resumen" name="paquete-resumen">
+                              <i class="fa fa-home" aria-hidden="true"></i> PYME
+                            </div>
+                            <p>Paquete</p>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="panel-body">
+                        <div id="todoContacto" class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <h4 class="example-title">Contacto</h4>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <a href="#" onclick="mostrar_ocultar('#contContacto','#btnmoContacto',1)" id="btnmoContacto">
+                              <span class="tag tag-success">+ Mostrar</span>
+                            </a>
+                            <div id="contContacto" class="cont">
+                              <div class="row">
+                                <div class="col-md-2 col-xs-6">Teléfono</div>
+                                <div class="col-md-4 col-xs-6 text-success">21212121</div>
+                                <div class="col-md-2 col-xs-6">Correo:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                              </div>
+                              <a href="#" onclick="mostrar_ocultar('#contContacto','#btnmoContacto',2)" id="btnocContacto">
+                                <span class="tag tag-danger">- Mostrar</span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div id="todoEmpresa" class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <h4 class="example-title">Empresa</h4>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',1)" id="btnmoEmpresa">
+                              <span class="tag tag-success">+ Mostrar</span>
+                            </a>
+                            <div id="contEmpresa" class="cont">
+                              <div class="row">
+                                <div class="col-md-2 col-xs-6">Razón social:</div>
+                                <div class="col-md-4 col-xs-6 text-success">21212121</div>
+                                <div class="col-md-2 col-xs-6">Nombre comercial:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-2 col-xs-6">Giro negocio:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-2 col-xs-6">Clientes:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-2 col-xs-6">Objetivos:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-2 col-xs-6">Competencia:</div>
+                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                              </div>
+                              <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',2)" id="btnocContacto">
+                                <span class="tag tag-danger">- Mostrar</span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div id="todoEmpresa" class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <h4 class="example-title">Identidad</h4>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',1)" id="btnmoEmpresa">
+                              <span class="tag tag-success">+ Mostrar</span>
+                            </a>
+                            <div id="contEmpresa" class="cont">
+                              
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -567,6 +696,7 @@
       </div>
       <!-- TERMINA EL PAGE CONTENT-->
     </div>
+    
     <!-- TERMINA PAGE2-->
     <!-- Core  -->
     <script src="/vendor/babel-external-helpers/babel-external-helpers.js"></script>
@@ -630,6 +760,10 @@
     <script src="/vendor/bootstrap-markdown/bootstrap-markdown.js"></script>
     <script src="/vendor/marked/marked.js"></script>
     <script src="/vendor/to-markdown/to-markdown.js"></script>
+    <script src="/vendor/chartist/chartist.min.js"></script>
+    <script src="/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
+    <script src="/vendor/jquery-selective/jquery-selective.min.js"></script>
+    <script src="/vendor/aspaginator/jquery.asPaginator.min.js"></script>
     <!-- Scripts -->
     <script src="/js/State.js"></script>
     <script src="/js/Component.js"></script>
@@ -681,14 +815,8 @@
     <script src="/js/Plugin/panel.js"></script>
     <script src="/examples/js/layouts/panel-transition.js"></script>
     <script src="/js/Plugin/summernote.js"></script>
-    <script>
-    (function(document, window, $) {
-      'use strict';
-      var Site = window.Site;
-      $(document).ready(function() {
-        Site.run();
-      });
-    })(document, window, jQuery);
-    </script>
+    <script src="/js/BaseApp.js"></script>
+    <script src="/js/Plugin/table.js"></script>
+    <script src="/examples/js/charts/peity.js"></script>
   </body>
 </html>

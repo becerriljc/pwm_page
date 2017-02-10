@@ -11,4 +11,8 @@ app.get('/', function (req, res) {
 	res.send(template)
 })
 
+app.post('/campoextra', function(req, res){
+	
+})
+
 app.listen(3000)

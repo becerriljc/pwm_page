@@ -3,6 +3,37 @@
 }
 
 
-.fondoEdit{
-	background-color: #f44336;
+.tam-img{
+	height: 50px;
+	width: 50px;
+}
+
+
+
+.work-status2 {
+   width: 15%;
+   padding-left: 0 !important;
+   display: none;
+}
+
+
+.subject2 {
+	width: 70%;
+   	padding-left: 0 !important;
+   	display: none;
+}
+
+.actions2 {
+	width: 15%;
+   	padding-left: 0 !important;
+   	display: none;
+}
+
+a, a:visited, a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+.cont{
+  display: none;
 }

@@ -5,23 +5,127 @@
 		[
 			[
 				"col-xs",
-				"col-xs-12"
-			],
-			[
-				"col",
-				"col-md-12"
-			],
-			[
-				"row",
-				"row-centered\t(index.html)"
-			],
-			[
-				"col-",
-				"col-xs-12"
+				"col-xs-6"
 			],
 			[
 				"col-md",
+				"col-md-2"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"conte",
+				"contenido"
+			],
+			[
+				"col-",
 				"col-md-12"
+			],
+			[
+				"get",
+				"getPaginaweb\t(appendsChildTable.js)"
+			],
+			[
+				"form",
+				"form-group"
+			],
+			[
+				"colorc",
+				"colorComplemento2\t(index.html)"
+			],
+			[
+				"color",
+				"colorComplemento1\t(index.html)"
+			],
+			[
+				"rs",
+				"rsInstagram\t(index.html)"
+			],
+			[
+				"raz",
+				"razonSocial"
+			],
+			[
+				"vali",
+				"validators"
+			],
+			[
+				"pasoCon",
+				"pasoContactoForm\t(index.html)"
+			],
+			[
+				"m",
+				"message"
+			],
+			[
+				"not",
+				"notEmpty"
+			],
+			[
+				"contac",
+				"contactoCorreo\t(index.html)"
+			],
+			[
+				"contact",
+				"contactoTelefono\t(index.html)"
+			],
+			[
+				"paso",
+				"pasoContacto\t(index.html)"
+			],
+			[
+				"col",
+				"col-xs-2"
+			],
+			[
+				"paq",
+				"paquete-resumen"
+			],
+			[
+				"slogan",
+				"slogan-resumen"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"im",
+				"images"
+			],
+			[
+				"up",
+				"uploader-inline\t(index.html)"
+			],
+			[
+				"uplo",
+				"upload-instructions\t(index.html)"
+			],
+			[
+				"row",
+				"row-centered"
+			],
+			[
+				"paosSe",
+				"pasoSeccionesF"
+			],
+			[
+				"modal",
+				"modal-lg"
+			],
+			[
+				"guar",
+				"guardaIDMenu"
+			],
+			[
+				"val",
+				"valueActual"
+			],
+			[
+				"btn",
+				"btnadd"
 			],
 			[
 				"menu",
@@ -240,10 +344,6 @@
 				"is_file〔function〕"
 			],
 			[
-				"btn",
-				"btnFileUpLoad"
-			],
-			[
 				"idA",
 				"idAlumno"
 			],
@@ -414,88 +514,11 @@
 			[
 				"opt",
 				"option"
-			],
-			[
-				"ro",
-				"$row〔variable〕"
-			],
-			[
-				"r",
-				"$rIDG〔variable〕"
-			],
-			[
-				"get",
-				"getDivClass〔function〕"
-			],
-			[
-				"getA",
-				"getAjax〔class〕"
-			],
-			[
-				"res",
-				"$result〔variable〕"
-			],
-			[
-				"Da",
-				"Database.php"
-			],
-			[
-				"nam",
-				"$namTab〔variable〕"
-			],
-			[
-				"num",
-				"numTabla"
-			],
-			[
-				"sw",
-				"switch"
-			],
-			[
-				"OP",
-				"OPTION\tTag"
-			],
-			[
-				"_i",
-				"_iInputChecked"
-			],
-			[
-				"ident",
-				"identity〔variable〕"
-			],
-			[
-				"form",
-				"form_reinscripcion.php"
-			],
-			[
-				"require",
-				"require_once〔function〕"
-			],
-			[
-				"inde",
-				"index-admin.php"
-			],
-			[
-				"font-s",
-				"font-size"
-			],
-			[
-				"bac",
-				"background-color"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "web/pages/index.html",
-			"settings":
-			{
-				"buffer_size": 34856,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -539,28 +562,33 @@
 		"/Users/juancarlosbecerril/Documents/pwm_page/web",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/images",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages"
 	],
 	"file_history":
 	[
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css/site.css",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/index.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css/site2.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/js/appendsChildTable.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/global/vendor/angular-ui-bootstrap/ui-bootstrap-tpls.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/uploads.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/global/js/jquery.shorten.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/server.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/wizard.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/back.html",
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/index.html",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/uploads.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js/Section/Menubar.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/advanced.js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css/site.css",
+		"/Users/juancarlosbecerril/Documents/pwm_page/global/vendor/angular-ui-bootstrap/ui-bootstrap-tpls.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js/appendsChildTable.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/wizard.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/editor-summernote.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/server.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/css/bootstrap.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/vendor/dropify/dropify.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/vendor/dropify/dropify.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/fonts/material-design/material-design.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/dos.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/vendor/jquery-wizard/jquery-wizard.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/examples/js/forms/wizard.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/test.html",
 		"/Users/juancarlosbecerril/Desktop/bomba.txt",
 		"/Users/juancarlosbecerril/Desktop/jsonProg.TXT",
@@ -667,10 +695,7 @@
 		"/Applications/XAMPP/xamppfiles/htdocs/portal/form_reinscripciones.php",
 		"/Applications/XAMPP/xamppfiles/htdocs/portal/encabezado.php",
 		"/Applications/XAMPP/xamppfiles/htdocs/tramites/concepto.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/tramites/alumno.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/tramites/ajax/cGrupos.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/tramites/class/Operaciones.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/tramites/class/Database.php"
+		"/Applications/XAMPP/xamppfiles/htdocs/tramites/alumno.php"
 	],
 	"find":
 	{
@@ -690,6 +715,74 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"col-md-",
+			"Contacto",
+			"text-success",
+			"p",
+			"h1",
+			"mostrar_ocultar",
+			"ocultartodo",
+			"mostrartodo",
+			"Empresa",
+			"contEmpresa",
+			"dos",
+			"popover",
+			"pop",
+			".btn-overflow",
+			".text-overflow",
+			"dl-horizontal",
+			"table-user-information",
+			"id=\"sitioweb",
+			"pasoContacto",
+			"letras",
+			"actions",
+			"work-status",
+			"actions",
+			"work-status",
+			"option",
+			"../../../assets",
+			"../../../../global",
+			"chartist.js",
+			"chartist.min.js",
+			"font-",
+			"font-family",
+			"jquery-selective.css",
+			"chartist-plugin-tooltip.css",
+			"chartist.css",
+			"../../../../global",
+			"../../../assets",
+			"agregar(",
+			"agregar",
+			"\"agregar",
+			"\"getData",
+			"\"",
+			"menuno",
+			"Menu1",
+			"\"",
+			"menu1",
+			"menu3",
+			"Menu3",
+			"menu3",
+			"menu1",
+			"Menu1",
+			"menu1",
+			"optMenu1",
+			"divmenu1",
+			"col-md-2",
+			".input-group-addon",
+			"col-md-1",
+			".modal",
+			"=\"/",
+			"../../../global",
+			"to-markdown",
+			"marked.js",
+			"bootstrap-markdown.js",
+			"outerHeight",
+			"../../../global",
+			"../../assets",
+			"files[]",
+			"inputUpload",
+			"cities.json",
 			"site-menubar-unfold",
 			"page",
 			"assertive",
@@ -749,75 +842,7 @@
 			"panel-line",
 			"step",
 			"step-desc",
-			"p",
-			"panel",
-			"row",
-			"steps",
-			"steps-sm",
-			"panel",
-			"pane",
-			"panel",
-			"fluid",
-			"container-fluid",
-			"container-",
-			"panel",
-			"../../../global",
-			"../../assets",
-			"<div class=\"panel\" id=\"exampleWizardForm\">",
-			"buttonsAppendTo",
-			"margin",
-			"span",
-			"h4",
-			"col-md-2",
-			"<br />",
-			"col-md-6",
-			"<script",
-			"<link",
-			"<meta",
-			"../../../global",
-			"../../assets",
-			"/data",
-			"../../../global",
-			"p. ej.",
-			"inputHint",
-			"data-hint=\"p. ej. Empresa S.A de C.V\"",
-			"inputHint",
-			"p. ej. Empresa S.A de C.V\" data-hint=\"p. ej. Empresa S.A de C.V",
-			"pagPref",
-			"inputHint",
-			"name=\"\"",
-			"value=\"#f44336\"",
-			"<input type=\"text\"",
-			"red",
-			"inputAddons",
-			"inputHint",
-			"inputGrid6",
-			"inputGrid4",
-			"inputGrid5",
-			"nombre3",
-			"inputGrid",
-			"placeholder=\"col-md-6\"",
-			"col-md-6",
-			"inputGrid2",
-			"inputGrid1",
-			"inputGrid2",
-			"inputGrid1",
-			"inputGrid2",
-			"data-hint",
-			"../../../global",
-			"<script",
-			"<link",
-			"../../../global",
-			"../../assets",
-			"private",
-			";",
-			"enlace: \"\"",
-			"HISPANOAMÉRICA",
-			"SANTO ROSARIO;8:00",
-			"perfil:''",
-			"https://www.facebook.com/encuentroconlaverdadradio",
-			"\"desc\"",
-			"\"img\""
+			"p"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -851,128 +876,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "web/pages/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34856,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1841,
-								1841
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1766,
-										1770
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1766,
-										1770
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 388.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1061,7 +966,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 278.0,
+	"side_bar_width": 170.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

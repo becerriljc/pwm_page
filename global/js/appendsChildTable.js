@@ -1,5 +1,11 @@
 var ini = 3;
 
+var showChar = 20;
+var ellipsestext = "...";
+var moretext = "more";
+var lesstext = "less";
+
+
 function agregar(menu){
 	var paq = $('#paquete').val()
 	if(ini < paq){
@@ -32,17 +38,42 @@ function agregar(menu){
 	
 }
 
-
-
-function getData(id){
-	$('#guardaIDMenu').val(id)
-	$('#examplePositionCenter').modal('show');
+function mostrar_ocultar(id, btn, accion){
+	if(accion == 1){
+		$(id).show()
+		$(btn).hide()
+	}else{
+		$(id).hide()
+		$(btn).show()
+	}
+	
 	
 }
 
-
-function guardarSeccion(){
-
+function ocultartodo(id){
+	$('#dos').hide()
+	$('#btnmostrar').show()
 }
 
-			
+function getData(id){
+	$('#guardaIDMenu').val(id)
+	$('#examplePositionCenter').modal('show')
+	$('#content').val('Esto es una prueba')
+	$('.upload-instructions').appendto('.uploader-inline')
+}
+
+
+function getPaginaweb(){
+	/*var isChecked = $("#tienePaginaweb").is(":checked") ? 1:0; 
+    
+    $.ajax({
+        type: 'POST',
+        url: '/campoextra',
+        data: 'estado=' + isChecked,
+        success: function(respuesta) { $('#paginawebactual').html(respuesta)},
+        error: function(e) { console.log(e.message) }
+
+
+    })
+    */
+}
