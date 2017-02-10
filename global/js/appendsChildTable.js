@@ -64,16 +64,11 @@ function getData(id){
 
 
 function getPaginaweb(){
-	/*var isChecked = $("#tienePaginaweb").is(":checked") ? 1:0; 
+	var isChecked = $("#tienePaginaweb").is(":checked") ? 1:0; 
     
-    $.ajax({
-        type: 'POST',
-        url: '/campoextra',
-        data: 'estado=' + isChecked,
-        success: function(respuesta) { $('#paginawebactual').html(respuesta)},
-        error: function(e) { console.log(e.message) }
-
-
-    })
-    */
+    if(isChecked){
+    	$('#divpaginawebactual').show()
+    }else{
+    	$('#divpaginawebactual').hide()
+    }
 }

@@ -9,7 +9,21 @@
     <title>FORM PWM</title>
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="shortcut icon" href="/images/favicon.ico">
-      <!-- Stylesheets -->
+
+    <!-- Configuración Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAjj15ONmvLc9IJ19FWPdHvDiZ9pyKHXiM",
+        authDomain: "pwmpage.firebaseapp.com",
+        databaseURL: "https://pwmpage.firebaseio.com",
+        storageBucket: "pwmpage.appspot.com",
+        messagingSenderId: "1086273728382"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/bootstrap-extend.css">
     <link rel="stylesheet" href="/css/site.css">
@@ -64,6 +78,7 @@
     <script>
       Breakpoints();
     </script>
+
   </head>
   <body class="animsition page2">
     <div class="page2">
@@ -341,20 +356,36 @@
                   <form id="pasoIdentidadForm">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
-                      <div class="form-group">
-                        <h4 class="example-title">slogan:</h4>
-                        <input type="text" class="form-control" id="slogan" name="slogan" placeholder="más que viajes ofrecemos expiencias" />
-                      </div>
-                      </div>
-                      <div class="col-md-3 col-xs-6">
-                        <div class="input-group">
-                          <h4 class="example-title">ACTUALMENTE CUENTAS CON PÁGINA WEB?</h4>
-                          <div class="form-control-wrap">
-                            <input type="checkbox" name="tienePaginaweb" id="tienePaginaweb" onchange="getPaginaweb()" /> Sí, tengo una página web.
-                          </div>
+                        <div class="form-group">
+                          <h4 class="example-title">slogan:</h4>
+                          <input type="text" class="form-control" id="slogan" name="slogan" placeholder="más que viajes ofrecemos expiencias" />
                         </div>
                       </div>
-                      <div class="col-md-3 col-xs-6" name="paginawebactual" id="paginawebactual">
+                      <div class="col-md-6 col-xs-12">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <h4 class="example-title">ACTUALMENTE CUENTAS CON PÁGINA WEB?</h4>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5 col-xs-12">
+                            <div class="form-control-wrap">
+                              <input type="checkbox" name="tienePaginaweb" id="tienePaginaweb" onchange="getPaginaweb()" /> Sí, tengo una página web.
+                            </div>
+                          </div>
+                          <div class="col-md-7 col-xs-12" id="divpaginawebactual">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-sitemap fa-2x" aria-hidden="true"></i>
+                                </span>
+                                <div class="form-control-wrap">
+                                  <input type="url" class="form-control" name="inputPagWebCliente" id="inputPagWebCliente" placeholder="http://hoteldonpedroperez.com" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <br />
@@ -390,10 +421,10 @@
                         <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon">
-                            <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                            <i class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
                           </span>
                           <div class="form-control-wrap">
-                            <input type="text" class="form-control" name="rsInstagram" id="rsInstagram" placeholder="@hoteldonPedroPerez" />
+                            <input type="text" class="form-control" name="rsGooglePlus" id="rsGooglePlus" placeholder="/hoteldonPedroPerez" />
                           </div>
                         </div>
                       </div>
@@ -408,7 +439,7 @@
                             <span>Color primario:</span>
                           </div>
                           <div class="col-md-6 col-xs-6">
-                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#9E9E9E" id="colorPrimario" name="colorPrimario" />
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#9C27B0" id="colorPrimario" name="colorPrimario" />
                           </div> 
                         </div>
                         <div class="row">
@@ -416,7 +447,7 @@
                             <span>Color secundario:</span>
                           </div>
                           <div class="col-md-6 col-xs-6">
-                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#607D8B" id="colorSecundario" name="colorSecundario" />
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#7C4DFF" id="colorSecundario" name="colorSecundario" />
                           </div> 
                         </div>
                         <div class="row">
@@ -432,7 +463,7 @@
                             <span>Color complementario:</span>
                           </div>
                           <div class="col-md-6 col-xs-6">
-                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#BDBDBD" id="colorComplemento2" name="colorComplemento2" />
+                            <input type="text" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="complex" value="#212121" id="colorComplemento2" name="colorComplemento2" />
                           </div> 
                         </div>
                       </div>
@@ -587,25 +618,25 @@
                         <h3 class="panel-title">RESUMEN GENERAL DEL PROYECTO</h3>
                         <ul class="panel-info">
                           <li>
-                            <img src="/images/avenger.png" class="tam-img" id="logo-resumen" name="logo-resumen">
+                            <img src="/images/avenger.png" class="tam-img" id="dataLogo">
                             <p>Logo</p>
                           </li>
                           <li>
-                            <div class="green-600" id="slogan-resumen" name="slogan-resumen">
+                            <div class="text-mod" id="dataSlogan">
                               Mas que viajes ofrecemos experiencias
                             </div>
                             <p>Slogan</p>
                           </li>
                           <li>
-                            <div class="green-600">Cadena Hotelera "Los Cabos"</div>
+                            <div class="text-mod" id="dataNombreComercial">Cadena Hotelera "Los Cabos"</div>
                             <p>Nombre Comercial</p>
                           </li>
                           <li>
-                            <div class="green-600">Pedro Pérez Pérez</div>
+                            <div class="text-mod" id="dataNombreContacto">Pedro Pérez Pérez</div>
                             <p>Contacto</p>
                           </li>
                           <li>
-                            <div class="green-600" id="paquete-resumen" name="paquete-resumen">
+                            <div class="text-mod" id="dataPaquete">
                               <i class="fa fa-home" aria-hidden="true"></i> PYME
                             </div>
                             <p>Paquete</p>
@@ -618,19 +649,11 @@
                             <h4 class="example-title">Contacto</h4>
                           </div>
                           <div class="col-md-12 col-xs-12">
-                            <a href="#" onclick="mostrar_ocultar('#contContacto','#btnmoContacto',1)" id="btnmoContacto">
-                              <span class="tag tag-success">+ Mostrar</span>
-                            </a>
-                            <div id="contContacto" class="cont">
-                              <div class="row">
+                            <div class="row">
                                 <div class="col-md-2 col-xs-6">Teléfono</div>
-                                <div class="col-md-4 col-xs-6 text-success">21212121</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataTelefono">21212121</div>
                                 <div class="col-md-2 col-xs-6">Correo:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
-                              </div>
-                              <a href="#" onclick="mostrar_ocultar('#contContacto','#btnmoContacto',2)" id="btnocContacto">
-                                <span class="tag tag-danger">- Mostrar</span>
-                              </a>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataCorreo">donpedro@correo.com</div>
                             </div>
                           </div>
                         </div>
@@ -640,52 +663,180 @@
                             <h4 class="example-title">Empresa</h4>
                           </div>
                           <div class="col-md-12 col-xs-12">
-                            <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',1)" id="btnmoEmpresa">
-                              <span class="tag tag-success">+ Mostrar</span>
-                            </a>
-                            <div id="contEmpresa" class="cont">
                               <div class="row">
                                 <div class="col-md-2 col-xs-6">Razón social:</div>
-                                <div class="col-md-4 col-xs-6 text-success">21212121</div>
-                                <div class="col-md-2 col-xs-6">Nombre comercial:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataRazonSocial">Hoteles Don Pedro S.A de C.V</div>
                               </div>
                               <div class="row">
                                 <div class="col-md-2 col-xs-6">Giro negocio:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataGiroNegocio">Servicios Turisticos</div>
                                 <div class="col-md-2 col-xs-6">Clientes:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataCliente">
+                                  <ul>
+                                    <li>Empresarios</li>
+                                    <li>Congresistas</li>
+                                  </ul>
+                                </div>
                               </div>
                               <div class="row">
                                 <div class="col-md-2 col-xs-6">Objetivos:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataObjetivos">
+                                  <ul>
+                                    <li>Ser lideres en linea hotelera</li>
+                                    <li>Dar un amplio confort a cada cliente</li>
+                                    <li>Brindar instalaciones de Primera</li>
+                                  </ul>
+                                </div>
                                 <div class="col-md-2 col-xs-6">Competencia:</div>
-                                <div class="col-md-4 col-xs-6 text-success">donpedro@correo.com</div>
+                                <div class="col-md-4 col-xs-6 text-mod" id="dataCompetencia">
+                                  <ul>
+                                    <li>Uber Hotel(https://www.uber.com)</li>
+                                  </ul>
+                                </div>
                               </div>
-                              <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',2)" id="btnocContacto">
-                                <span class="tag tag-danger">- Mostrar</span>
-                              </a>
-                            </div>
                           </div>
                         </div>
                         <hr>
-                        <div id="todoEmpresa" class="row">
+                        <div class="row" id="todoIdentidad">
                           <div class="col-md-12 col-xs-12">
                             <h4 class="example-title">Identidad</h4>
                           </div>
                           <div class="col-md-12 col-xs-12">
-                            <a href="#" onclick="mostrar_ocultar('#contEmpresa','#btnmoEmpresa',1)" id="btnmoEmpresa">
-                              <span class="tag tag-success">+ Mostrar</span>
-                            </a>
-                            <div id="contEmpresa" class="cont">
-                              
+                            <div class="row">
+                              <div class="col-md-2 col-xs-6">Slogan:</div>
+                              <div class="col-md-4 col-xs-6 text-mod" id="dataSlogan">Servicios Turisticos</div>
+                              <div class="col-md-2 col-xs-6">Página web actual:</div>
+                              <div class="col-md-4 col-xs-6 text-mod" id="dataPagWebAct">N/A</div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-2 col-xs-6">Redes Sociales:</div>
+                              <div class="col-md-4 col-xs-6 text-mod">
+                                <div class="row" id="dataFacebook">
+                                  <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                  <span class="text-mod">/donpedroHotelera</span>
+                                </div>
+                                <div class="row" id="dataTwitter">
+                                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                  <span class="text-mod">N/A</span>
+                                </div>
+                                <div class="row" id="dataInstagram">
+                                  <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                                  <span class="text-mod">N/A</span>
+                                </div>
+                              </div>
+                              <div class="col-md-2 col-xs-6">Colores Corporativos:</div>
+                              <div class="col-md-4 col-xs-6" id="dataColores">
+                                <span class="tag" style="background-color: #9C27B0" id="dataColPrim">Primario</span>
+                                <span class="tag" style="background-color: #7C4DFF" id="dataColSeco">Secundario</span>
+                                <span class="tag" style="background-color: #616161" id="dataColCom1">Complemento</span>
+                                <span class="tag" style="background-color: #212121" id="dataColCom2">Complemento</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- termina identidad -->
+                        <hr>
+                        <div class="row" id="todoEstructura">
+                          <div class="col-md-12 col-xs-12">
+                            <h4 class="example-title">Estructura</h4>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="row">
+                              <div class="col-xs-12 col-md-12">
+                                <h5 class="example-title">Inicio</h5>
+                                <a href="#" onclick="mostrar_ocultar('#contInicio', '#btnmoInicio', 1)" id="btnmoInicio">
+                                  <span class="tag tag-primary">+ mostrar</span>
+                                </a>
+                              </div>
+                              <div class="cont" id="contInicio">
+                                <div class="col-md-6 col-xs-6 text-justify">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                  <img src="/images/avenger.png" class="dataimgmos">
+                                  <img src="/images/avenger.png" class="dataimgmos">
+                                  <img src="/images/avenger.png" class="dataimgmos">
+                                  <img src="/images/avenger.png" class="dataimgmos">
+                                  <img src="/images/avenger.png" class="dataimgmos">
+                                </div>
+                                <div class="cont2" id="contsubMenu1">
+                                  <div class="col-md-12 col-xs-12">
+                                    <div class="row">
+                                      <div class="col-md-12 col-xs-12">
+                                        <h5>SubMenu1</h5>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6 col-xs-6 text-justify">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                  <a href="#" onclick="mostrar_ocultar('#contInicio', '#btnmoInicio', 2)" id="btnmoInicio">
+                                    <span class="tag tag-danger">- mostrar</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-xs-12 col-md-12">
+                                <h5 class="example-title">Nosotros</h5>
+                                <a href="#" onclick="mostrar_ocultar('#contNosotros', '#btnmoNosotros', 1)" id="btnmoNosotros">
+                                  <span class="tag tag-primary">+ mostrar</span>
+                                </a>
+                              </div>
+                              <div class="cont" id="contNosotros">
+                                <div class="col-md-6 col-xs-6">
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                </div>
+                                <a href="#" onclick="mostrar_ocultar('#contNosotros', '#btnmoNosotros', 2)" id="btnmoNosotros">
+                                  <span class="tag tag-danger">- mostrar</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-md-12">
+                                <h5 class="example-title">Contacto</h5>
+                                <a href="#" onclick="mostrar_ocultar('#contContacto', '#btnmoContacto', 1)" id="btnmoContacto">
+                                  <span class="tag tag-primary">+ mostrar</span>
+                                </a>
+                              </div>
+                              <div class="cont" id="contContacto">
+                                <div class="col-md-6 col-xs-6">
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                </div>
+                                <a href="#" onclick="mostrar_ocultar('#contContacto', '#btnmoContacto', 2)" id="btnmoContacto">
+                                  <span class="tag tag-danger">- mostrar</span>
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <hr>
-                      </div>
-                    </div>
-                  </div>
+                      </div><!-- termina panel body-->
+                    </div> <!-- termina panel -->
+                  </div> <!-- termina app work -->
                 </div>
               </div>
             </div>
@@ -818,5 +969,14 @@
     <script src="/js/BaseApp.js"></script>
     <script src="/js/Plugin/table.js"></script>
     <script src="/examples/js/charts/peity.js"></script>
+    <script>
+    (function(document, window, $) {
+      'use strict';
+      var Site = window.Site;
+      $(document).ready(function() {
+        Site.run();
+      });
+    })(document, window, jQuery);
+    </script>
   </body>
 </html>

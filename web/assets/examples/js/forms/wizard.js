@@ -233,9 +233,9 @@
               message: 'Formato invalido, sólo puede contener carateres alfabeticos, puntos, guiones y numeros'
           }
         }},
-        rsInstagram:{validators:{
+        rsGooglePlus:{validators:{
           regexp: {
-              regexp: /^\@[a-zA-Z|0-9|\-]+$/,
+              regexp: /^\/[a-zA-Z|0-9|\-|\.]+$/,
               message: 'Formato invalido, sólo puede contener carateres alfabeticos, puntos, guiones y numeros'
           }
         }},

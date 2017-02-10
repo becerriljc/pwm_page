@@ -8,7 +8,9 @@
 	width: 50px;
 }
 
-
+.text-mod{
+  color: #00acc1;
+}
 
 .work-status2 {
    width: 15%;
@@ -35,5 +37,29 @@ a, a:visited, a:hover {
 }
 
 .cont{
+  display: none;
+}
+
+#refImg{
+  height: 50px;
+  width: 50px;
+}
+
+ul {
+     margin: 0px;
+     padding: 0px;
+}
+li {
+     margin: 0px;
+     padding: 0px;
+}
+
+.dataimgmos{
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+#divpaginawebactual{
   display: none;
 }
