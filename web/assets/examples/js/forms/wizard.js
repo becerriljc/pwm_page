@@ -3,6 +3,8 @@
  * Copyright 2016 amazingsurge
  * Licensed under the Themeforest Standard Licenses
  */
+
+
 (function(document, window, $) {
   'use strict';
 
@@ -54,6 +56,13 @@
             }
           }
         },
+        paquete:{
+          validators:{
+            notEmpty:{
+              message: 'Deseamos conocer cuál es el paquete contratado.'
+            }
+          }
+        }
       },
       err: {
         clazz: 'text-help'
@@ -400,7 +409,7 @@
       if(!fv.isValid()){
         return false
       }
-
+      insertaContacto()
       return true
     })
 
@@ -411,7 +420,7 @@
       if(!fv.isValid()){
         return false
       }
-
+      insertaEmpresa()
       return true
     })
 
@@ -422,7 +431,7 @@
       if(!fv.isValid()){
         return false
       }
-
+      insertaIdentidad()
       return true
     })
     /*wizard.get("#exampleAccount").setValidator(function() {

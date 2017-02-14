@@ -1,9 +1,13 @@
+var idUser = null;
+
 var ini = 3;
 
 var showChar = 20;
 var ellipsestext = "...";
 var moretext = "more";
 var lesstext = "less";
+
+var idReg = generaID()
 
 
 function agregar(menu){
@@ -71,4 +75,219 @@ function getPaginaweb(){
     }else{
     	$('#divpaginawebactual').hide()
     }
+}
+
+function valoresAdd(id, valor){
+	alert("Mi id es: " + id + " y valor: " + valor)
+}
+
+function S4() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
+}
+
+function generaID(){
+	return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase()
+}
+
+
+function getInfoPaquete(paquete){
+	var icono, nombre
+
+	switch(paquete){
+		case "5": icono = "fa-home"; nombre = "PYME"; break;
+		case "10": icono = "fa-bicycle"; nombre = "Profesional"; break;
+		case "15": icono = "fa-car"; nombre = "Empresarial"; break;
+		case "30": icono = "fa-star"; nombre = "Elite"; break;
+	}
+
+	return [icono, nombre]
+}
+
+
+function actualizaCampos(datos){
+	if(datos != null){
+		if(datos.nombre !== 'undefined') {
+			$('#dataNombreContacto').empty()
+			$('<p>' + datos.nombre + '</p>').appendTo('#dataNombreContacto')
+		}
+		if(datos.correo !== 'undefined'){ 
+			$('#dataCorreo').empty()
+			$('<p>' + datos.correo + '</p>').appendTo('#dataCorreo')
+		}
+		if(datos.telefono !== 'undefined'){ 
+			$('#dataTelefono').empty()
+			$('<p>' + datos.telefono + '</p>').appendTo('#dataTelefono')
+		}
+		if(datos.paquete !== 'undefined'){
+			$('#dataPaquete').empty()
+			var info = getInfoPaquete(datos.paquete)
+			var tmpPaquete = '<i class="fa '+info[0]+'" aria-hidden="true"></i> ' + info[1]
+			$(tmpPaquete).appendTo('#dataPaquete')
+		}
+		if(datos.razonSocial !== 'undefined'){
+			$('#dataRazonSocial').empty()
+			$('<p>' + datos.razonSocial + '</p>').appendTo('#dataRazonSocial')
+		}
+		if(datos.nombreComercial !== 'undefined'){
+			$('#dataNombreComercial').empty()
+			$('<p>' + datos.nombreComercial + '</p>').appendTo('#dataNombreComercial')
+		}
+		if(datos.giroNegocio !== 'undefined'){
+			$('#dataGiroNegocio').empty()
+			$('<p>' + datos.giroNegocio + '</p>').appendTo('#dataGiroNegocio')
+		}
+
+		var clients = "";
+		if( (datos.cliente1 !== 'undefined') && (datos.cliente1 !== "") ){
+			clients += "<li>" + datos.cliente1 + "</li>"
+		} 
+		if( (datos.cliente2 !== 'undefined') && (datos.cliente2 !== "") ){
+			clients += "<li>" + datos.cliente2 + "</li>"
+		} 
+		if( (datos.cliente3 !== 'undefined') && (datos.cliente3 !== "") ){
+			clients += "<li>" + datos.cliente3 + "</li>"
+		} 
+		if( (datos.cliente4 !== 'undefined') && (datos.cliente4 !== "") ){
+			clients += "<li>" + datos.cliente4 + "</li>"
+		} 
+		if(clients !== ""){
+			$('#dataCliente').empty()
+			$('<ul>' + clients + '</ul>').appendTo('#dataCliente')
+		}
+
+		var objetivos = ""
+		if( (datos.objetivo1 !== 'undefined') && (datos.objetivo1 !== "")){
+			objetivos += "<li>" + datos.objetivo1 + "</li>"
+		}
+		if( (datos.objetivo2 !== 'undefined') && (datos.objetivo2 !== "")){
+			objetivos += "<li>" + datos.objetivo2 + "</li>"
+		}
+		if( (datos.objetivo3 !== 'undefined') && (datos.objetivo3 !== "")){
+			objetivos += "<li>" + datos.objetivo3 + "</li>"
+		}
+		if( (datos.objetivo4 !== 'undefined') && (datos.objetivo4 !== "")){
+			objetivos += "<li>" + datos.objetivo4 + "</li>"
+		}
+		if(objetivos !== ""){
+			$('#dataObjetivos').empty()
+			$('<ul>' + objetivos + '</ul>').appendTo('#dataObjetivos')
+		}
+
+		var competidores = ""
+		if( (datos.nombre1 !== 'undefined') && (datos.sitioweb1 !== 'undefined') ){
+			if((datos.nombre1 !== "") && (datos.sitioweb1 !== "")){
+				competidores += "<li>" + datos.nombre1 + " [" + datos.sitioweb1 + "]</li>"
+			}else{
+				competidores += "<li>" + datos.nombre1 + " " + datos.sitioweb1 + "</li>"
+			}
+		}
+		if( (datos.nombre2 !== 'undefined') && (datos.sitioweb2 !== 'undefined') ){
+			if((datos.nombre2 !== "") || (datos.sitioweb2 !== "")){
+				competidores += "<li>" + datos.nombre2 + " " + datos.sitioweb2 + "</li>"
+			}
+		} 
+		if( (datos.nombre3 !== 'undefined') && (datos.sitioweb3 !== 'undefined') ){
+			if((datos.nombre3 !== "") || (datos.sitioweb3 !== "")){
+				competidores += "<li>" + datos.nombre3 + " " + datos.sitioweb3 + "</li>"
+			}
+		} 
+		if(competidores !== ""){
+			$('#dataCompetencia').empty()
+			$('<ul>' + competidores + '</ul>').appendTo('#dataCompetencia')
+		}
+
+		if( (datos.slogan !== 'undefined') && (datos.slogan !== "")){
+			$('#dataSlogan').empty()
+			$('#dataSlogan2').empty()
+			$('<p>' + datos.slogan + '</p>').appendTo('#dataSlogan')
+			$('<p>' + datos.slogan + '</p>').appendTo('#dataSlogan2')
+		}
+		if( (datos.tienePaginaweb !== 'undefined') && (datos.tienePaginaweb !== "")){
+			if((datos.tienePaginaweb == "on") && (datos.inputPagWebCliente !== "")){
+				$('#dataPagWebAct').empty()
+				$('<p>' + datos.inputPagWebCliente + '</p>').appendTo('#dataPagWebAct')
+			}
+		}
+		if( (datos.logo !== 'undefined') && (datos.logo !== "")){}
+		if( (datos.rsFacebook !== 'undefined') && (datos.rsFacebook !== "")){
+			$('#dataFacebook').empty()
+			var tmp = '<i class="fa fa-facebook-official" aria-hidden="true"></i><span class="text-mod"> '+datos.rsFacebook+'</span>'
+			$(tmp).appendTo('#dataFacebook')
+		}
+		if( (datos.rsTwitter !== 'undefined') && (datos.rsTwitter !== "")){
+			$('#dataTwitter').empty()
+			var tmp = '<i class="fa fa-twitter-square" aria-hidden="true"></i><span class="text-mod"> '+datos.rsTwitter+'</span>'
+			$(tmp).appendTo('#dataTwitter')
+		}
+		if( (datos.rsGooglePlus !== 'undefined') && (datos.rsGooglePlus !== "")){
+			$('#dataGooglep').empty()
+			var tmp = '<i class="fa fa-google-plus-square" aria-hidden="true"></i><span class="text-mod"> '+datos.rsGooglePlus+'</span>'
+			$(tmp).appendTo('#dataGooglep')
+		}
+		var colores = ""
+		if( (datos.colorPrimario !== 'undefined') && (datos.colorPrimario !== "")){
+			colores += '<span class="tag" style="background-color: '+datos.colorPrimario+'" id="dataColPrim">Primario</span>'
+		}
+		if( (datos.colorSecundario !== 'undefined') && (datos.colorSecundario !== "")){
+			colores += '<span class="tag" style="background-color: '+datos.colorSecundario+'" id="dataColSeco">Secundario</span>'
+		}
+		if( (datos.colorComplemento1 !== 'undefined') && (datos.colorComplemento1 !== "")){
+			colores += '<span class="tag" style="background-color: '+datos.colorComplemento1+'" id="dataColCom1">Complemento</span>'
+		}
+		if( (datos.colorComplemento2 !== 'undefined') && (datos.colorComplemento2 !== "")){
+			colores += '<span class="tag" style="background-color: '+datos.colorComplemento2+'" id="dataColCom2">Complemento</span>'
+		}
+		if(colores !== ""){
+			$('#dataColores').empty()
+			$(colores).appendTo('#dataColores')
+		}
+	}
+}
+
+function insertaContacto() {
+	
+	firebase.database().ref('/' + idReg).update({
+		nombre : $('#contactoNombre').val(),
+		correo : $('#contactoCorreo').val(),
+		telefono : $('#contactoTelefono').val(),
+		paquete : $('#paquete').val()
+	})
+}
+
+function insertaEmpresa(){
+	firebase.database().ref('/' + idReg).update({
+		razonSocial : $('#razonSocial').val(),
+		nombreComercial : $('#nombreComercial').val(), 
+		giroNegocio : $('#giroNegocio').val(),
+		cliente1 : $('#cliente1').val(),
+		cliente2 : $('#cliente2').val(),
+		cliente3 : $('#cliente3').val(),
+		cliente4 : $('#cliente4').val(),
+		objetivo1 : $('#objetivo1').val(),
+		objetivo2 : $('#objetivo2').val(),
+		objetivo3 : $('#objetivo3').val(),
+		objetivo4 : $('#objetivo4').val(),
+		nombre1 : $('#nombre1').val(),
+		nombre2 : $('#nombre2').val(),
+		nombre3 : $('#nombre3').val(),
+		sitioweb1 : $('#sitioweb1').val(),
+		sitioweb2 : $('#sitioweb2').val(),
+		sitioweb3 : $('#sitioweb3').val()
+	})
+}
+
+function insertaIdentidad(){
+	firebase.database().ref('/' + idReg).update({
+		slogan : $('#slogan').val(),
+		tienePaginaweb : $('#tienePaginaweb').val(),
+		inputPagWebCliente : $('#inputPagWebCliente').val(),
+		logo : $('#input-file-max-fs').val(),
+		rsFacebook : $('#rsFacebook').val(),
+		rsTwitter : $('#rsTwitter').val(),
+		rsGooglePlus : $('#rsGooglePlus').val(),
+		colorPrimario : $('#colorPrimario').val(),
+		colorSecundario : $('#colorSecundario').val(),
+		colorComplemento1 : $('#colorComplemento1').val(),
+		colorComplemento2 : $('#colorComplemento2').val()
+	})
 }
