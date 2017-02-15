@@ -106,48 +106,48 @@ function getInfoPaquete(paquete){
 
 function actualizaCampos(datos){
 	if(datos != null){
-		if(datos.nombre !== 'undefined') {
+		if(typeof datos.nombre !== 'undefined') {
 			$('#dataNombreContacto').empty()
 			$('<p>' + datos.nombre + '</p>').appendTo('#dataNombreContacto')
 		}
-		if(datos.correo !== 'undefined'){ 
+		if(typeof datos.correo !== 'undefined'){ 
 			$('#dataCorreo').empty()
 			$('<p>' + datos.correo + '</p>').appendTo('#dataCorreo')
 		}
-		if(datos.telefono !== 'undefined'){ 
+		if(typeof datos.telefono !== 'undefined'){ 
 			$('#dataTelefono').empty()
 			$('<p>' + datos.telefono + '</p>').appendTo('#dataTelefono')
 		}
-		if(datos.paquete !== 'undefined'){
+		if(typeof datos.paquete !== 'undefined'){
 			$('#dataPaquete').empty()
 			var info = getInfoPaquete(datos.paquete)
 			var tmpPaquete = '<i class="fa '+info[0]+'" aria-hidden="true"></i> ' + info[1]
 			$(tmpPaquete).appendTo('#dataPaquete')
 		}
-		if(datos.razonSocial !== 'undefined'){
+		if(typeof datos.razonSocial !== 'undefined'){
 			$('#dataRazonSocial').empty()
 			$('<p>' + datos.razonSocial + '</p>').appendTo('#dataRazonSocial')
 		}
-		if(datos.nombreComercial !== 'undefined'){
+		if(typeof datos.nombreComercial !== 'undefined'){
 			$('#dataNombreComercial').empty()
 			$('<p>' + datos.nombreComercial + '</p>').appendTo('#dataNombreComercial')
 		}
-		if(datos.giroNegocio !== 'undefined'){
+		if(typeof datos.giroNegocio !== 'undefined'){
 			$('#dataGiroNegocio').empty()
 			$('<p>' + datos.giroNegocio + '</p>').appendTo('#dataGiroNegocio')
 		}
 
 		var clients = "";
-		if( (datos.cliente1 !== 'undefined') && (datos.cliente1 !== "") ){
+		if( (typeof datos.cliente1 !== 'undefined') && (datos.cliente1 !== "") ){
 			clients += "<li>" + datos.cliente1 + "</li>"
 		} 
-		if( (datos.cliente2 !== 'undefined') && (datos.cliente2 !== "") ){
+		if( (typeof datos.cliente2 !== 'undefined') && (datos.cliente2 !== "") ){
 			clients += "<li>" + datos.cliente2 + "</li>"
 		} 
-		if( (datos.cliente3 !== 'undefined') && (datos.cliente3 !== "") ){
+		if( (typeof datos.cliente3 !== 'undefined') && (datos.cliente3 !== "") ){
 			clients += "<li>" + datos.cliente3 + "</li>"
 		} 
-		if( (datos.cliente4 !== 'undefined') && (datos.cliente4 !== "") ){
+		if( (typeof datos.cliente4 !== 'undefined') && (datos.cliente4 !== "") ){
 			clients += "<li>" + datos.cliente4 + "</li>"
 		} 
 		if(clients !== ""){
@@ -156,16 +156,16 @@ function actualizaCampos(datos){
 		}
 
 		var objetivos = ""
-		if( (datos.objetivo1 !== 'undefined') && (datos.objetivo1 !== "")){
+		if( (typeof datos.objetivo1 !== 'undefined') && (datos.objetivo1 !== "")){
 			objetivos += "<li>" + datos.objetivo1 + "</li>"
 		}
-		if( (datos.objetivo2 !== 'undefined') && (datos.objetivo2 !== "")){
+		if( (typeof datos.objetivo2 !== 'undefined') && (datos.objetivo2 !== "")){
 			objetivos += "<li>" + datos.objetivo2 + "</li>"
 		}
-		if( (datos.objetivo3 !== 'undefined') && (datos.objetivo3 !== "")){
+		if( (typeof datos.objetivo3 !== 'undefined') && (datos.objetivo3 !== "")){
 			objetivos += "<li>" + datos.objetivo3 + "</li>"
 		}
-		if( (datos.objetivo4 !== 'undefined') && (datos.objetivo4 !== "")){
+		if( (typeof datos.objetivo4 !== 'undefined') && (datos.objetivo4 !== "")){
 			objetivos += "<li>" + datos.objetivo4 + "</li>"
 		}
 		if(objetivos !== ""){
@@ -174,21 +174,21 @@ function actualizaCampos(datos){
 		}
 
 		var competidores = ""
-		if( (datos.nombre1 !== 'undefined') && (datos.sitioweb1 !== 'undefined') ){
+		if( (typeof datos.nombre1 !== 'undefined') && (typeof datos.sitioweb1 !== 'undefined') ){
 			if((datos.nombre1 !== "") && (datos.sitioweb1 !== "")){
 				competidores += "<li>" + datos.nombre1 + " [" + datos.sitioweb1 + "]</li>"
 			}else{
 				competidores += "<li>" + datos.nombre1 + " " + datos.sitioweb1 + "</li>"
 			}
 		}
-		if( (datos.nombre2 !== 'undefined') && (datos.sitioweb2 !== 'undefined') ){
+		if( (typeof datos.nombre2 !== 'undefined') && (typeof datos.sitioweb2 !== 'undefined') ){
 			if((datos.nombre2 !== "") || (datos.sitioweb2 !== "")){
-				competidores += "<li>" + datos.nombre2 + " " + datos.sitioweb2 + "</li>"
+				competidores += "<li>" + datos.nombre2 + " [" + datos.sitioweb2 + "]</li>"
 			}
 		} 
-		if( (datos.nombre3 !== 'undefined') && (datos.sitioweb3 !== 'undefined') ){
+		if( (typeof datos.nombre3 !== 'undefined') && (typeof datos.sitioweb3 !== 'undefined') ){
 			if((datos.nombre3 !== "") || (datos.sitioweb3 !== "")){
-				competidores += "<li>" + datos.nombre3 + " " + datos.sitioweb3 + "</li>"
+				competidores += "<li>" + datos.nombre3 + " [" + datos.sitioweb3 + "]</li>"
 			}
 		} 
 		if(competidores !== ""){
@@ -196,45 +196,45 @@ function actualizaCampos(datos){
 			$('<ul>' + competidores + '</ul>').appendTo('#dataCompetencia')
 		}
 
-		if( (datos.slogan !== 'undefined') && (datos.slogan !== "")){
+		if( (typeof datos.slogan !== 'undefined') && (datos.slogan !== "")){
 			$('#dataSlogan').empty()
 			$('#dataSlogan2').empty()
 			$('<p>' + datos.slogan + '</p>').appendTo('#dataSlogan')
 			$('<p>' + datos.slogan + '</p>').appendTo('#dataSlogan2')
 		}
-		if( (datos.tienePaginaweb !== 'undefined') && (datos.tienePaginaweb !== "")){
+		if( (typeof datos.tienePaginaweb !== 'undefined') && (datos.tienePaginaweb !== "")){
 			if((datos.tienePaginaweb == "on") && (datos.inputPagWebCliente !== "")){
 				$('#dataPagWebAct').empty()
 				$('<p>' + datos.inputPagWebCliente + '</p>').appendTo('#dataPagWebAct')
 			}
 		}
-		if( (datos.logo !== 'undefined') && (datos.logo !== "")){}
-		if( (datos.rsFacebook !== 'undefined') && (datos.rsFacebook !== "")){
+			
+		if ((typeof datos.rsFacebook !== 'undefined') && (datos.rsFacebook !== "")){
 			$('#dataFacebook').empty()
 			var tmp = '<i class="fa fa-facebook-official" aria-hidden="true"></i><span class="text-mod"> '+datos.rsFacebook+'</span>'
 			$(tmp).appendTo('#dataFacebook')
 		}
-		if( (datos.rsTwitter !== 'undefined') && (datos.rsTwitter !== "")){
+		if( (typeof datos.rsTwitter !== 'undefined') && (datos.rsTwitter !== "")){
 			$('#dataTwitter').empty()
 			var tmp = '<i class="fa fa-twitter-square" aria-hidden="true"></i><span class="text-mod"> '+datos.rsTwitter+'</span>'
 			$(tmp).appendTo('#dataTwitter')
 		}
-		if( (datos.rsGooglePlus !== 'undefined') && (datos.rsGooglePlus !== "")){
+		if( (typeof datos.rsGooglePlus !== 'undefined') && (datos.rsGooglePlus !== "")){
 			$('#dataGooglep').empty()
 			var tmp = '<i class="fa fa-google-plus-square" aria-hidden="true"></i><span class="text-mod"> '+datos.rsGooglePlus+'</span>'
 			$(tmp).appendTo('#dataGooglep')
 		}
 		var colores = ""
-		if( (datos.colorPrimario !== 'undefined') && (datos.colorPrimario !== "")){
+		if( (typeof datos.colorPrimario !== 'undefined') && (datos.colorPrimario !== "")){
 			colores += '<span class="tag" style="background-color: '+datos.colorPrimario+'" id="dataColPrim">Primario</span>'
 		}
-		if( (datos.colorSecundario !== 'undefined') && (datos.colorSecundario !== "")){
+		if( (typeof datos.colorSecundario !== 'undefined') && (datos.colorSecundario !== "")){
 			colores += '<span class="tag" style="background-color: '+datos.colorSecundario+'" id="dataColSeco">Secundario</span>'
 		}
-		if( (datos.colorComplemento1 !== 'undefined') && (datos.colorComplemento1 !== "")){
+		if( (typeof datos.colorComplemento1 !== 'undefined') && (datos.colorComplemento1 !== "")){
 			colores += '<span class="tag" style="background-color: '+datos.colorComplemento1+'" id="dataColCom1">Complemento</span>'
 		}
-		if( (datos.colorComplemento2 !== 'undefined') && (datos.colorComplemento2 !== "")){
+		if( (typeof datos.colorComplemento2 !== 'undefined') && (datos.colorComplemento2 !== "")){
 			colores += '<span class="tag" style="background-color: '+datos.colorComplemento2+'" id="dataColCom2">Complemento</span>'
 		}
 		if(colores !== ""){
