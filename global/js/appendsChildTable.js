@@ -9,6 +9,31 @@ var lesstext = "less";
 
 var idReg = generaID()
 
+function addFiles(archivos){
+
+	if(archivos.length > 0){
+		var formData = new FormData();
+
+    	for (var i = 0; i < archivos.length; i++) {
+      		var file = archivos[i];
+
+      		formData.append('uploads[]', file, file.name);
+    	}
+
+    	$.ajax({
+		  url: '/upload',
+		  type: 'POST',
+		  data: formData,
+		  processData: false,
+		  contentType: false,
+		  success: function(data){
+		      console.log('upload successful!');
+		  }
+		})
+	}
+
+}
+
 
 function agregar(menu){
 	var paq = $('#paquete').val()
@@ -61,9 +86,15 @@ function ocultartodo(id){
 
 function getData(id){
 	$('#guardaIDMenu').val(id)
+	var object = cambios.child('menus/' + id);
+	if(typeof object.nombre !== 'undefined'){
+		$('#content').val(object.nombre)
+	}else{
+		$('#content').val('Esto es una prueba')
+	}
+	$('.file-list').empty()
 	$('#examplePositionCenter').modal('show')
-	$('#content').val('Esto es una prueba')
-	$('.upload-instructions').appendto('.uploader-inline')
+	//$('.upload-instructions').appendto('.uploader-inline')
 }
 
 
@@ -272,7 +303,7 @@ function insertaEmpresa(){
 		nombre3 : $('#nombre3').val(),
 		sitioweb1 : $('#sitioweb1').val(),
 		sitioweb2 : $('#sitioweb2').val(),
-		sitioweb3 : $('#sitioweb3').val()
+		sitioweb3 : $('#sitioweb3').val(),
 	})
 }
 
@@ -290,4 +321,15 @@ function insertaIdentidad(){
 		colorComplemento1 : $('#colorComplemento1').val(),
 		colorComplemento2 : $('#colorComplemento2').val()
 	})
+}
+
+function guardarSeccion(){
+	var formElements = new Array();
+	var i = 0
+	var contenido = $('#content').val()
+	var files = $('#inputFiles')
+	console.log(contenido) 
+	console.log(files)
+	//for(var i=0; i < files.length; i++)
+	//	console.log(files[i].name)
 }

@@ -14,9 +14,9 @@
 
   // Example File Upload
   // -------------------
-  $('#pasoSeccionesForm').fileupload({
-    url: '../../server/fileupload/',
-    dropzone: $('#arrastremultiple'),
+  $('#exampleUploadForm').fileupload({
+    url: '/uploads/',
+    dropzone: $('#exampleUploadForm'),
     filesContainer: $('.file-list'),
     uploadTemplateId: false,
     downloadTemplateId: false,
@@ -71,15 +71,50 @@
     previewMaxHeight: false,
     previewThumbnail: false
   }).on('fileuploadprocessalways', function(e, data) {
-    var length = data.files.length;
 
+    var length = data.files.length;
+    var fd = new FormData();
     for (var i = 0; i < length; i++) {
       if (!data.files[i].type.match(/^image\/(gif|jpeg|png|svg\+xml)$/)) {
         data.files[i].filetype = 'other-file';
-      } else {
-        data.files[i].filetype = 'image';
+      }else{
+        data.files[i].filetype = 'image'
+        var filename = data.files[i].name 
+        var extension = filename.replace(/^.*\./, '')
+        if ((extension=="jpg") || (extension=="png")){
+          fd.append('images[]', data.files[i]);
+        }
       }
     }
+    $.ajax({
+      type: "POST",
+      url: "/verificar",
+      contentType: false,
+      processData: false,
+      data: fd,
+      cache:false,
+      success: function(data) {
+        //$('#componentImg').val(data);
+        //$('#nimagen').val(filename.substr(filename.lastIndexOf('\\') + 1));
+      }
+    })
+    /*var filename = data.files[i].name 
+        var extension = filename.replace(/^.*\./, '')
+        if ((extension=="jpg") || (extension=="png")){
+          var fd = new FormData();
+          fd.append('imagen', data.files[i]);
+          $.ajax({
+            type: "POST",
+            url: "/subirimagen",
+            contentType: false,
+            processData: false,
+            data: fd,
+            success: function(data) {
+                //$('#componentImg').val(data);
+                //$('#nimagen').val(filename.substr(filename.lastIndexOf('\\') + 1));
+            }
+          })
+        }*/
   }).on('fileuploadadded', function(e) {
     var $this = $(e.target);
 
@@ -109,7 +144,7 @@
   });
 
   $(document).bind('dragover', function(e) {
-    var dropZone = $('#arrastremultiple'),
+    var dropZone = $('#exampleUploadForm'),
       timeout = window.dropZoneTimeout;
     if (!timeout) {
       dropZone.addClass('in');

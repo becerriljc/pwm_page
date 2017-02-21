@@ -3046,7 +3046,7 @@ body > .loader {
 }
 
 .site-menubar-unfold > .loader {
-  margin-left: 130px;
+  margin-left: 10px;
 }
 
 .site-menubar-fold > .loader {
