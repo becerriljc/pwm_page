@@ -17,7 +17,7 @@ function addFiles(archivos){
     	for (var i = 0; i < archivos.length; i++) {
       		var file = archivos[i];
 
-      		formData.append('uploads[]', file, file.name);
+      		formData.append('uploads[]', file);
     	}
 
     	$.ajax({

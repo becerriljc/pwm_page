@@ -1,135 +1,102 @@
-var express = require('express')
-var app = express()
-var fs = require('fs')
-var multer=require('multer')
-var uuid = require('uuid-base62');
-var multipart = require('connect-multiparty')
+var express = require('express'),
+    path = require('path'),
+    fs = require('fs'),
+    formidable = require('formidable'),
+    readChunk = require('read-chunk'),
+    fileType = require('file-type'),
+    uuid = require('uuid-base62')
+
+var app = express();
+
+app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static('global'))
 app.use(express.static('web/assets'))
 app.use(express.static('web/pages'))
-app.use(multipart());
 
+app.use('/uploads', express.static('uploads'));
+
+/**
+ * Index route
+ */
 app.get('/', function (req, res) {
-	var template = fs.readFileSync("index.html", "utf8")
+   
+    var template = fs.readFileSync("index.html", "utf8")
 	res.send(template)
-})
+});
 
-var idArray = new Array()
+/**
+ * Upload photos route.
+ */
+app.post('/upload_photos', function (req, res) {
+    var photos = [],
+        form = new formidable.IncomingForm(),
+        idsArray = new Array()
 
-function getID(){
-	var id= uuid.v4()
-	idArray.push(id)
-	return id
-}
+    // Tells formidable that there will be multiple files sent.
+    form.multiples = true;
+    // Upload directory for the images
+    form.uploadDir = path.join(__dirname, 'tmp_uploads');
 
-var storage = multer.diskStorage({
-	destination: function (req, file, callback) {
-		callback(null, './global/uploads/')
-	},
-	filename: function (req, file, callback) {
-		callback(null, getID() + '.png')
-	}
-})
+    // Invoked when a file has finished uploading.
+    form.on('file', function (name, file) {
+        // Allow only 3 files to be uploaded.
+        if (photos.length === 12) {
+            fs.unlink(file.path);
+            return true;
+        }
 
-var upload = multer({ storage:storage })
+        var buffer = null,
+            type = null,
+            filename = '';
 
-app.post('/upload', function(req, res){
+        buffer = readChunk.sync(file.path, 0, 262);
+        type = fileType(buffer);
 
-	console.log(req.files.uploads.length)
+        // Check the file type, must be either png,jpg or jpeg
+        if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
+            var uid = uuid.v4()
 
-	var archivos = req.files.uploads
+            filename = uid + '.' + type.ext;
 
-	for(i = 0; i < archivos.length; i++){
-		
-	}
+            // Move the file with the new file name
+            fs.rename(file.path, path.join(__dirname, 'uploads/' + filename));
 
-	var storage = multer.diskStorage({
-		destination: function (req, file, callback) {
-			callback(null, './global/uploads/')
-		},
-		filename: function (req, file, callback) {
-			callback(null, getID() + '.png')
-		}
-	})
+            // Add to the list of photos
+            photos.push({
+                status: true,
+                filename: filename,
+                type: type.ext,
+                publicPath: 'uploads/' + filename
+            });
 
-	var upload = multer({ storage:storage }).array('uploads', 12)
+            idsArray.push(uid)
+        } else {
+            photos.push({
+                status: false,
+                filename: file.name,
+                message: 'Invalid file type'
+            });
+            fs.unlink(file.path);
+        }
+    });
 
-	console.log('excelente')
-	res.end('perfecto')
+    form.on('error', function(err) {
+        console.log('Error occurred during processing - ' + err);
+    });
 
-})
-/*
-var storage = multer.diskStorage({
-	destination: function (req, file, callback) {
-		callback(null, './global/uploads/')
-	},
-	filename: function (req, file, callback) {
-		callback(null, getID() + '.png')
-	}
-})
+    // Invoked when all the fields have been processed.
+    form.on('end', function() {
+        console.log('All the request fields have been processed.');
+    });
 
+    // Parse the incoming form fields.
+    form.parse(req, function (err, fields, files) {
+        
+        res.end('jep')
+    });
+});
 
-var upload = multer({ storage:storage })
-
-app.post('/verificar', upload.array('myimage', 12), function(req, res, next){
-	console.log(req)
-	console.log('listo')
-	res.end(idArray.toString())
-	idArray = new Array()
-})
-
-
-app.post('/verificar', function(req, res, next){
-	console.log(req.files.images)
-})
-
-var storage = multer.diskStorage({
-	destination: function (req, file, callback) {
-	   	callback(null, './global/uploads')
-	},
-	filename: function (req, file, callback) {
-	   	callback(null, file.name + '.png')
-	 }
-})
-
-var upload = multer({ storage: storage }).array('imagenes', 12)
-
-app.post('/subirimagen',function(req,res){
-	
-	upload(req,res,function(err) {
-	    if(err) {
-	        return res.end("Error uploading file.");
-	    }
-	    console.log('Si se pudo')
-	    res.end("File is uploaded");
-	})
-})
-
-*/
-
-/* YA FUNCIONA
-app.post('/subirimagen',function(req,res){
-
-	var idimagen=uuid.v4()
-	var storage	=	multer.diskStorage({
-	  destination: function (req, file, callback) {
-	    callback(null, './global/uploads');
-
-	  },
-	  filename: function (req, file, callback) {
-	    callback(null, '' + idimagen + '.jpg');
-	  }
-	});
-	var upload = multer({ storage : storage}).single('imagen');
-	upload(req,res,function(err) {
-		if(err) {
-			console.log(err)
-			return res.end("");
-		}
-		console.log(idimagen)
-		res.end(idimagen);
-	}); 
-})*/
-
-app.listen(3000)
+app.listen(app.get('port'), function() {
+    console.log('Express started at port ' + app.get('port'));
+});
