@@ -145,7 +145,7 @@
                           <h4 class="example-title">Paquete adquirido:</h4>
                           <select data-plugin="selectpicker" name="paquete" id="paquete" value="10">
                             <option data-icon="md-info" value="">ELEGIR</option>
-                            <option data-icon="md-home" value="5">PyME</option>
+                            <option data-icon="md-home" value="5" selected>PyME</option>
                             <option data-icon="md-bike" value="10">Profesional</option>
                             <option data-icon="md-car"  value="15">Empresarial</option>
                             <option data-icon="md-star" value="30">Elite</option>
@@ -584,26 +584,16 @@
                           <div class="panel-heading">
                             <h3 class="panel-title p-x-0">Suba sus archivos</h3>
                           </div>
-                          <form id="upload-photos" method="post" action="/upload_photos" enctype="multipart/form-data">
+                          <form id="upload-photos" method="post" action="#" onsubmit="cargaArchivos(); return false;" enctype="multipart/form-data">
                             <div class="form-group">
                               <label for="photos-input">File input</label>
                               <input id="photos-input" type="file" name="photos[]" multiple="multiple" >
-                              <p class="help-block">You can upload up to 3 files.</p>
+                              <p class="help-block">Puedes subir hasta 12 archivos.</p>
                             </div>
                             <input type="hidden" name="csrf_token" value="just_a_text_field" />
                             <input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload Photos" />
                           </form>
                           <br/>
-                          <!-- Progress Bar -->
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="progress">
-                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                  <span class="sr-only"></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                       <br />
@@ -961,6 +951,7 @@
     <script src="/js/BaseApp.js"></script>
     <script src="/js/Plugin/table.js"></script>
     <script src="/examples/js/charts/peity.js"></script>
+    <script src="/js/upload.js"></script>
     <script>
     (function(document, window, $) {
       'use strict';

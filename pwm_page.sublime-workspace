@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"res",
+				"response"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"console",
+				"console.log\t(server.js)"
+			],
+			[
+				"lo",
+				"log\t(server.js)"
+			],
+			[
 				"mul",
 				"multipart"
 			],
@@ -58,10 +74,6 @@
 			[
 				"id",
 				"idArray"
-			],
-			[
-				"console",
-				"console.log"
 			],
 			[
 				"imagen",
@@ -372,10 +384,6 @@
 				"unlink"
 			],
 			[
-				"file",
-				"fileName"
-			],
-			[
 				"int",
 				"intval"
 			],
@@ -506,14 +514,6 @@
 			[
 				"tri",
 				"trim〔function〕"
-			],
-			[
-				"FILTER_SA",
-				"FILTER_SANITIZE_NUMBER_INT〔constant〕"
-			],
-			[
-				"group",
-				"groupTFin"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "web/pages/index.html",
 			"settings":
 			{
-				"buffer_size": 1349,
+				"buffer_size": 57227,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -532,17 +532,19 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 3337,
+				"buffer_size": 3023,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "global/js/upload.js",
 			"settings":
 			{
-				"buffer_size": 482,
-				"line_ending": "Unix"
+				"buffer_size": 808,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "upload"
 			}
 		}
 	],
@@ -583,17 +585,20 @@
 	"expanded_folders":
 	[
 		"/Users/juancarlosbecerril/Documents/pwm_page",
+		"/Users/juancarlosbecerril/Documents/pwm_page/global",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets",
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js"
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages"
 	],
 	"file_history":
 	[
+		"/Users/juancarlosbecerril/Documents/pwm_page/server.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/js/upload.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/ups.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/index2.html",
+		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/ups.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/pages/index.html",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/js/appendsChildTable.js",
-		"/Users/juancarlosbecerril/Documents/pwm_page/server.js",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css/style.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/web/assets/css/site2.css",
 		"/Users/juancarlosbecerril/Documents/pwm_page/global/js/upload.js",
@@ -896,7 +901,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -905,15 +910,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1349,
+						"buffer_size": 57227,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1349,
-								1349
+								56315,
+								56315
 							]
 						],
 						"settings":
@@ -925,8 +930,8 @@
 								{
 									"1":
 									[
-										1344,
-										1348
+										56308,
+										56314
 									]
 								},
 								"icon":
@@ -941,8 +946,8 @@
 								{
 									"1":
 									[
-										17,
-										21
+										56279,
+										56285
 									]
 								},
 								"unmatched":
@@ -1012,7 +1017,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 27.0,
+						"translation.y": 14987.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1024,15 +1029,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3337,
+						"buffer_size": 3023,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								381,
-								381
+								2893,
+								2893
 							]
 						],
 						"settings":
@@ -1044,8 +1049,8 @@
 								{
 									"1":
 									[
-										380,
-										381
+										2900,
+										2901
 									]
 								},
 								"icon":
@@ -1060,8 +1065,8 @@
 								{
 									"1":
 									[
-										379,
-										380
+										2893,
+										2894
 									]
 								},
 								"unmatched":
@@ -1127,34 +1132,36 @@
 								"bh_unmatched_content"
 							],
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 172.0,
+						"translation.y": 932.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "package.json",
-					"semi_transient": true,
+					"file": "global/js/upload.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 482,
+						"buffer_size": 808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								642,
+								642
 							]
 						],
 						"settings":
 						{
+							"auto_name": "upload",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -1162,8 +1169,8 @@
 								{
 									"1":
 									[
-										480,
-										481
+										804,
+										805
 									]
 								},
 								"icon":
@@ -1178,8 +1185,8 @@
 								{
 									"1":
 									[
-										0,
-										1
+										329,
+										330
 									]
 								},
 								"unmatched":
@@ -1244,15 +1251,15 @@
 								"bh_unmatched_close",
 								"bh_unmatched_content"
 							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

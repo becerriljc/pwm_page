@@ -63,3 +63,8 @@ li {
 #divpaginawebactual{
   display: none;
 }
+
+.tamMuestra{
+  height: 30px;
+  width: 30px;
+}

@@ -4,7 +4,8 @@ var express = require('express'),
     formidable = require('formidable'),
     readChunk = require('read-chunk'),
     fileType = require('file-type'),
-    uuid = require('uuid-base62')
+    uuid = require('uuid-base62'),
+    bodyParser = require('body-parser')
 
 var app = express();
 
@@ -13,6 +14,9 @@ app.set('port', (process.env.PORT || 3000));
 app.use(express.static('global'))
 app.use(express.static('web/assets'))
 app.use(express.static('web/pages'))
+
+app.use(bodyParser.json()) //para aplicaciones json
+app.use(bodyParser.urlencoded({extended:true})) //para realizar peticiones tradicionales
 
 app.use('/uploads', express.static('uploads'));
 
@@ -69,8 +73,7 @@ app.post('/upload_photos', function (req, res) {
                 type: type.ext,
                 publicPath: 'uploads/' + filename
             });
-
-            idsArray.push(uid)
+            idsArray.push(filename)
         } else {
             photos.push({
                 status: false,
@@ -92,8 +95,9 @@ app.post('/upload_photos', function (req, res) {
 
     // Parse the incoming form fields.
     form.parse(req, function (err, fields, files) {
-        
-        res.end('jep')
+        console.log(idsArray)
+        console.log(photos)
+        res.end(JSON.stringify(photos))
     });
 });
 
