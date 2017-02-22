@@ -51,15 +51,18 @@ function agregar(menu){
 			"<div class='row row-centered' id='divbtnmenu"+ini+"'><div class='col-xs-12 col-md-12'>"+
             "<button type='button' class='btn btn-xs btn-success' id='menu"+ini+"' name='menu"+ini+"' onclick='agregar(\"menu"+ini+"\")'>"+
             "<i class='icon md-plus' aria-hidden='true'></i>Agregar</button></div></div></div>"
-
+			firebase.database().ref('/' + idReg).child('menus/menu' + ini).update({
+				texto : ""
+			})
 			btnadd = "#divmenubtn"
 		}else{
-
 			addto = "<div class='row'><div class='form-group'><div class='input-group input-group-icon'>"+
 			"<input type='text' class='form-control' name='optMenu"+ini+"' id='optMenu"+ini+"' value='submenu"+ini+"'>"+
 			"<span class='input-group-addon text-danger' onclick='getData(\"optMenu"+ini+"\")'>"+
 			"<i class='fa fa-pencil-square-o fa-3x' aria-hidden='true'></i></span></div></div></div>"
-			
+			firebase.database().ref('/' + idReg).child('menus').child(menu + '/optMenu' + ini).update({
+				texto:""
+			})
 			btnadd += menu
 		}
 		$( addto ).insertBefore( btnadd ); 
@@ -86,6 +89,7 @@ function ocultartodo(id){
 
 function getData(id){
 	$('#guardaIDMenu').val(id)
+	console.log(id)
 	var object = cambios.child('menus/' + id);
 	if(typeof object.nombre !== 'undefined'){
 		$('#content').val(object.nombre)
@@ -93,8 +97,9 @@ function getData(id){
 		$('#content').val('Esto es una prueba')
 	}
 	$('.file-list').empty()
+	$('#album').empty()
 	$('#examplePositionCenter').modal('show')
-	//$('.upload-instructions').appendto('.uploader-inline')
+
 }
 
 
@@ -272,6 +277,9 @@ function actualizaCampos(datos){
 			$('#dataColores').empty()
 			$(colores).appendTo('#dataColores')
 		}
+		if(typeof datos.imgs !== null){
+			
+		}
 	}
 }
 
@@ -281,7 +289,18 @@ function insertaContacto() {
 		nombre : $('#contactoNombre').val(),
 		correo : $('#contactoCorreo').val(),
 		telefono : $('#contactoTelefono').val(),
-		paquete : $('#paquete').val()
+		paquete : $('#paquete').val(),
+		menus:{
+			menu1:{
+				texto : ''
+			},
+			menu2:{
+				texto : ''
+			},
+			menu3:{
+				texto : ''
+			}
+		}
 	})
 }
 
@@ -330,6 +349,50 @@ function guardarSeccion(){
 	var files = $('#inputFiles')
 	console.log(contenido) 
 	console.log(files)
-	//for(var i=0; i < files.length; i++)
-	//	console.log(files[i].name)
+}
+
+function uploadFiles(formData) {
+    $.ajax({
+        url: '/upload_photos',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success:function(data){
+            $("#photos-input").val('')
+            var allFiles = JSON.parse(data)
+            console.log(allFiles)
+            var todo = ""
+            for(i = 0; i < allFiles.length; i++){
+				firebase.database().ref('/' + idReg).child('imgs').push(allFiles[i])
+                todo += '<img src="uploads/'+ allFiles[i].name +'" class="tamMuestra">' 
+            }
+            $(todo).appendTo('#album')
+        }
+    })
+}
+
+function cargaArchivos() {
+    
+    var files = $('#photos-input').get(0).files,
+        formData = new FormData();
+
+    if (files.length === 0) {
+        alert('Select atleast 1 file to upload.');
+        return false;
+    }
+
+    if (files.length > 12) {
+        alert('You can only upload up to 12 files.');
+        return false;
+    }
+
+    for (var i=0; i < files.length; i++) {
+        var file = files[i];
+        formData.append('photos[]', file, file.name);
+    }
+
+
+    uploadFiles(formData)
+
 }

@@ -5,9 +5,20 @@ var express = require('express'),
     readChunk = require('read-chunk'),
     fileType = require('file-type'),
     uuid = require('uuid-base62'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
+    firebase = require('firebase')
 
 var app = express();
+
+var config = {
+    apiKey: "AIzaSyAjj15ONmvLc9IJ19FWPdHvDiZ9pyKHXiM",
+    authDomain: "pwmpage.firebaseapp.com",
+    databaseURL: "https://pwmpage.firebaseio.com",
+    storageBucket: "pwmpage.appspot.com",
+    messagingSenderId: "1086273728382"
+  };
+  
+  firebase.initializeApp(config);
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -20,18 +31,12 @@ app.use(bodyParser.urlencoded({extended:true})) //para realizar peticiones tradi
 
 app.use('/uploads', express.static('uploads'));
 
-/**
- * Index route
- */
 app.get('/', function (req, res) {
    
     var template = fs.readFileSync("index.html", "utf8")
 	res.send(template)
 });
 
-/**
- * Upload photos route.
- */
 app.post('/upload_photos', function (req, res) {
     var photos = [],
         form = new formidable.IncomingForm(),
@@ -73,7 +78,9 @@ app.post('/upload_photos', function (req, res) {
                 type: type.ext,
                 publicPath: 'uploads/' + filename
             });
-            idsArray.push(filename)
+            idsArray.push({
+                name: filename
+            })
         } else {
             photos.push({
                 status: false,
@@ -95,10 +102,8 @@ app.post('/upload_photos', function (req, res) {
 
     // Parse the incoming form fields.
     form.parse(req, function (err, fields, files) {
-        console.log(idsArray)
-        console.log(photos)
-        res.end(JSON.stringify(photos))
-    });
+        res.end(JSON.stringify(idsArray))
+    })
 });
 
 app.listen(app.get('port'), function() {

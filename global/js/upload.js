@@ -1,4 +1,4 @@
-function uploadFiles(formData) {
+/*function uploadFiles(formData) {
     $.ajax({
         url: '/upload_photos',
         method: 'post',
@@ -6,11 +6,12 @@ function uploadFiles(formData) {
         processData: false,
         contentType: false,
         success:function(data){
-            $("#photos-input").val('');
+            $("#photos-input").val('')
             var allFiles = JSON.parse(data)
+            console.log(allFiles)
             var todo = ""
             for(i = 0; i < allFiles.length; i++){
-                todo += '<img src="'+ allFiles.publicPath +'" class="tamMuestra">' 
+                todo += '<img src="uploads/'+ allFiles[i].name +'" class="tamMuestra">' 
             }
             $(todo).appendTo('#album')
         }
@@ -40,6 +41,6 @@ function cargaArchivos() {
 
     uploadFiles(formData)
 
-}
+} */
 
 
