@@ -9,32 +9,6 @@ var lesstext = "less";
 
 var idReg = generaID()
 
-function addFiles(archivos){
-
-	if(archivos.length > 0){
-		var formData = new FormData();
-
-    	for (var i = 0; i < archivos.length; i++) {
-      		var file = archivos[i];
-
-      		formData.append('uploads[]', file);
-    	}
-
-    	$.ajax({
-		  url: '/upload',
-		  type: 'POST',
-		  data: formData,
-		  processData: false,
-		  contentType: false,
-		  success: function(data){
-		      console.log('upload successful!');
-		  }
-		})
-	}
-
-}
-
-
 function agregar(menu){
 	var paq = $('#paquete').val()
 	if(ini < paq){
@@ -43,25 +17,28 @@ function agregar(menu){
 		var menuno = menu + ini
 		var btnadd = "#divbtn"
 		if(menu == "menubtn"){
-			addto = "<div class='col-md-2 col-xs-2' id='divmenu"+ini+"' name='divmenu"+ini+"'>" +
+			
+			addto = "<div class='col-md-2 col-xs-2' id='divoptMenu"+ini+"'>" +
 			"<div class='row'><div class='form-group'><div class='input-group input-group-icon'>" +
 			"<input type='text' class='form-control' name='optMenu"+ini+"' id='optMenu"+ini+"' value='Menu"+ini+"'>" +
-			"<span class='input-group-addon text-danger' onclick='getData(\"optMenu"+ini+"\")'>"+
+			"<span class='input-group-addon text-danger' onclick='getData(\"optMenu"+ini+"\",\"\")'>"+
 			"<i class='fa fa-pencil-square-o fa-3x' aria-hidden='true'></i></span></div></div></div>"+
-			"<div class='row row-centered' id='divbtnmenu"+ini+"'><div class='col-xs-12 col-md-12'>"+
-            "<button type='button' class='btn btn-xs btn-success' id='menu"+ini+"' name='menu"+ini+"' onclick='agregar(\"menu"+ini+"\")'>"+
+			"<div class='row row-centered' id='divbtnoptMenu"+ini+"'><div class='col-xs-12 col-md-12'>"+
+            "<button type='button' class='btn btn-xs btn-success' id='menu"+ini+"' name='menu"+ini+"' onclick='agregar(\"optMenu"+ini+"\")'>"+
             "<i class='icon md-plus' aria-hidden='true'></i>Agregar</button></div></div></div>"
-			firebase.database().ref('/' + idReg).child('menus/menu' + ini).update({
-				texto : ""
+			firebase.database().ref('/' + idReg).child('menus/optMenu' + ini).update({
+				texto : "",
+				titulo:""
 			})
 			btnadd = "#divmenubtn"
 		}else{
 			addto = "<div class='row'><div class='form-group'><div class='input-group input-group-icon'>"+
 			"<input type='text' class='form-control' name='optMenu"+ini+"' id='optMenu"+ini+"' value='submenu"+ini+"'>"+
-			"<span class='input-group-addon text-danger' onclick='getData(\"optMenu"+ini+"\")'>"+
+			"<span class='input-group-addon text-danger' onclick='getData(\"optMenu"+ini+"\",\""+menu+"\")'>"+
 			"<i class='fa fa-pencil-square-o fa-3x' aria-hidden='true'></i></span></div></div></div>"
 			firebase.database().ref('/' + idReg).child('menus').child(menu + '/optMenu' + ini).update({
-				texto:""
+				texto:"", 
+				titulo:""
 			})
 			btnadd += menu
 		}
@@ -87,16 +64,17 @@ function ocultartodo(id){
 	$('#btnmostrar').show()
 }
 
-function getData(id){
+function getData(id, padre){
 	$('#guardaIDMenu').val(id)
-	console.log(id)
+	$('#padreIDMenu').val(padre)
+	$('#tituloMenu').val($('#' + id).val())
 	var object = cambios.child('menus/' + id);
 	if(typeof object.nombre !== 'undefined'){
 		$('#content').val(object.nombre)
 	}else{
 		$('#content').val('Esto es una prueba')
 	}
-	$('.file-list').empty()
+	$('#listnames').val("")
 	$('#album').empty()
 	$('#examplePositionCenter').modal('show')
 
@@ -277,8 +255,10 @@ function actualizaCampos(datos){
 			$('#dataColores').empty()
 			$(colores).appendTo('#dataColores')
 		}
-		if(typeof datos.imgs !== null){
-			
+		if(typeof datos.menus !== 'undefined'){
+			for(i = 0; i < datos.menus.length; i++){
+				
+			}
 		}
 	}
 }
@@ -291,14 +271,17 @@ function insertaContacto() {
 		telefono : $('#contactoTelefono').val(),
 		paquete : $('#paquete').val(),
 		menus:{
-			menu1:{
-				texto : ''
+			optMenu1:{
+				titulo:"",
+				texto:""
 			},
-			menu2:{
-				texto : ''
+			optMenu2:{
+				titulo:"",
+				texto:""
 			},
-			menu3:{
-				texto : ''
+			optMenu3:{
+				titulo:"",
+				texto:""
 			}
 		}
 	})
@@ -343,12 +326,19 @@ function insertaIdentidad(){
 }
 
 function guardarSeccion(){
-	var formElements = new Array();
 	var i = 0
 	var contenido = $('#content').val()
-	var files = $('#inputFiles')
-	console.log(contenido) 
-	console.log(files)
+	var id = $('#guardaIDMenu').val()
+	var tit = $('#tituloMenu').val()
+	var padre = $('#padreIDMenu').val()
+	console.log(padre)
+	if(padre !== ""){
+		id = padre + "/" + id
+	}
+	firebase.database().ref('/' + idReg).child('menus').child(id).update({
+		texto:contenido, titulo: tit
+	})
+	$('#examplePositionCenter').modal('hide')
 }
 
 function uploadFiles(formData) {
@@ -361,13 +351,20 @@ function uploadFiles(formData) {
         success:function(data){
             $("#photos-input").val('')
             var allFiles = JSON.parse(data)
-            console.log(allFiles)
+            
             var todo = ""
+			var id = $('#guardaIDMenu').val()
+			var padre = $('#padreIDMenu').val()
+			
+			if(padre !== ""){
+				id = padre + "/" + id
+			}
             for(i = 0; i < allFiles.length; i++){
-				firebase.database().ref('/' + idReg).child('imgs').push(allFiles[i])
+				firebase.database().ref('/' + idReg).child('menus').child(id + "/imgs").push(allFiles[i])
                 todo += '<img src="uploads/'+ allFiles[i].name +'" class="tamMuestra">' 
             }
             $(todo).appendTo('#album')
+			$('#listnames').val("")
         }
     })
 }
@@ -390,9 +387,63 @@ function cargaArchivos() {
     for (var i=0; i < files.length; i++) {
         var file = files[i];
         formData.append('photos[]', file, file.name);
+		console.log(i + 1)
     }
 
 
-    uploadFiles(formData)
+    //uploadFiles(formData)
 
+}
+
+function getInfo(objeto){
+	var tit = objeto.titulo
+	console.log( '<div class="row"><div class="col-xs-12 col-md-12"><h5 class="example-title">'+tit+'</h5>'+
+        	'<a href="#" onclick="mostrar_ocultar("#cont'+tit+'", "#btnmo'+tit+'", 1)" id="btnmo'+tit+'">'+
+            '<span class="tag tag-primary">+ mostrar</span></a></div><div class="cont" id="cont'+tit+'">'+
+            '<div class="col-md-6 col-xs-6 text-justify">'+tit.texto+'</div><div class="col-md-6 col-xs-6">'+
+			getImages(tit.imgs) + '</div>')
+                                /*<div class="cont2" id="contsubMenu1">
+                                  <div class="col-md-12 col-xs-12">
+                                    <div class="row">
+                                      <div class="col-md-12 col-xs-12">
+                                        <h5>SubMenu1</h5>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6 col-xs-6 text-justify">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                  <img src="/images/i1.jpg" class="dataimgmos">
+                                  <img src="/images/i2.jpg" class="dataimgmos">
+                                  <img src="/images/i3.jpg" class="dataimgmos">
+                                  <img src="/images/i4.jpg" class="dataimgmos">
+                                  <img src="/images/i5.jpg" class="dataimgmos">
+                                </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                  <a href="#" onclick="mostrar_ocultar('#contInicio', '#btnmoInicio', 2)" id="btnmoInicio">
+                                    <span class="tag tag-danger">- mostrar</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>*/
+}
+
+function getImages(){
+
+//<img src="/images/avenger.png" class="dataimgmos">
 }
