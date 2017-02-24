@@ -256,9 +256,7 @@ function actualizaCampos(datos){
 			$(colores).appendTo('#dataColores')
 		}
 		if(typeof datos.menus !== 'undefined'){
-			for(i = 0; i < datos.menus.length; i++){
-				
-			}
+			console.log(datos.menus)
 		}
 	}
 }
@@ -387,11 +385,9 @@ function cargaArchivos() {
     for (var i=0; i < files.length; i++) {
         var file = files[i];
         formData.append('photos[]', file, file.name);
-		console.log(i + 1)
     }
 
-
-    //uploadFiles(formData)
+    uploadFiles(formData)
 
 }
 
